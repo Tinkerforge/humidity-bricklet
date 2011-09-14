@@ -9,10 +9,13 @@ public class ExampleThreshold {
 	// Note: To make the example code cleaner we do not handle exceptions. Exceptions you
 	//       might normally want to catch are described in the commnents below
 	public static void main(String args[]) throws Exception {
-		IPConnection ipcon = new IPConnection(host, port); // Create connection to brickd (Can throw IOException)
+		// Create connection to brickd
+		IPConnection ipcon = new IPConnection(host, port); // Can throw IOException
 
 		BrickletHumidity hum = new BrickletHumidity(UID); // Create device object
-		ipcon.addDevice(hum); // Add device to ip connection (Can throw IPConnection.TimeoutException)
+
+		// Add device to ip connection
+		ipcon.addDevice(hum); // Can throw IPConnection.TimeoutException
 		// Don't use device before it is added to a connection
 		
 
@@ -22,7 +25,8 @@ public class ExampleThreshold {
 		// Configure threshold for "outside of 30 to 60 %RH" (unit is %RH/10)
 		hum.setHumidityCallbackThreshold('o', (short)(30*10), (short)(60*10));
 
-		// Add and implement humidity reached listener (called if humidity is outside of 30 to 60 %RH)
+		// Add and implement humidity reached listener 
+		// (called if humidity is outside of 30 to 60 %RH)
 		hum.addListener(new BrickletHumidity.HumidityReachedListener() {
 			public void humidityReached(int humidity) {
 				if(humidity < 30) {
