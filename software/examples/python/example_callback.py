@@ -5,8 +5,8 @@ HOST = "localhost"
 PORT = 4223
 UID = "XYZ" # Change to your UID
 
-from ip_connection import IPConnection
-from bricklet_humidity import Humidity
+from tinkerforge.ip_connection import IPConnection
+from tinkerforge.bricklet_humidity import Humidity
 
 # Callback function for humidity callback (parameter has unit %RH/10)
 def cb_humidity(rh):
