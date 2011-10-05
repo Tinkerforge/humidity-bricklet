@@ -3,7 +3,7 @@
 
 HOST = "localhost"
 PORT = 4223
-UID = "XYZ" # Change to your UID
+UID = "ABC" # Change to your UID
 
 from ip_connection import IPConnection
 from bricklet_humidity import Humidity

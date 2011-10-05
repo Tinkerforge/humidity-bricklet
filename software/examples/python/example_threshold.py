@@ -10,9 +10,9 @@ from bricklet_humidity import Humidity
 
 # Callback for humidity outside of 30 to 60 %RH
 def cb_reached(humidity):
-    if humidity < 30:
+    if humidity < 30*10:
         print('Humidity too low: ' + str(humidity/10.0) + ' %RH')
-    if humidity > 60:
+    if humidity > 60*10:
         print('Humidity too high ' + str(humidity/10.0) + ' %RH')
 
     print('Recommended humiditiy for human comfort is 30 to 60 %RH.')

@@ -14,10 +14,10 @@
 
 // Callback for humidity outside of 30 to 60 %RH
 void cb_reached(uint16_t humidity) {
-	if(humidity < 30) {
+	if(humidity < 30*10) {
 		printf("Humidity too low: %f %%RH\n", humidity/10.0);
 	}
-	if(humidity > 60) {
+	if(humidity > 60*10) {
 		printf("Humidity too high: %f %%RH\n", humidity/10.0);
 	}
 
