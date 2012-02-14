@@ -102,6 +102,6 @@ int32_t humidity_from_analog_value(int32_t value) {
 	return BC->humidity_avg;
 }
 
-void tick(void) {
-	simple_tick();
+void tick(uint8_t tick_type) {
+	simple_tick(tick_type);
 }
