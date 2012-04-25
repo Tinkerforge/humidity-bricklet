@@ -16,9 +16,8 @@ class Example
 	{
 		IPConnection ipcon = new IPConnection(HOST, PORT); // Create connection to brickd
 		BrickletHumidity hum = new BrickletHumidity(UID); // Create device object
-		ipcon.AddDevice(hum); // Add device to ip connection
+		ipcon.AddDevice(hum); // Add device to IP connection
 		// Don't use device before it is added to a connection
-
 
 		// Set Period for humidity callback to 1s (1000ms)
 		// Note: The humidity callback is only called every second if the 
@@ -30,5 +29,5 @@ class Example
 
 		System.Console.WriteLine("Press ctrl+c to exit");
 		ipcon.JoinThread();
-    }
+	}
 }

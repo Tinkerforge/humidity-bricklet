@@ -9,10 +9,10 @@ from tinkerforge.ip_connection import IPConnection
 from tinkerforge.bricklet_humidity import Humidity
 
 if __name__ == "__main__":
-    ipcon = IPConnection(HOST, PORT) # Create ip connection to brickd
+    ipcon = IPConnection(HOST, PORT) # Create IP connection to brickd
 
     al = Humidity(UID) # Create device object
-    ipcon.add_device(al) # Add device to ip connection
+    ipcon.add_device(al) # Add device to IP connection
     # Don't use device before it is added to a connection
 
     # Get current humidity (unit is %RH/10)

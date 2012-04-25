@@ -14,7 +14,7 @@ void cb_humidity(uint16_t humidity) {
 }
 
 int main() {
-	// Create ip connection to brickd
+	// Create IP connection to brickd
 	IPConnection ipcon;
 	if(ipcon_create(&ipcon, HOST, PORT) < 0) {
 		fprintf(stderr, "Could not create connection\n");
@@ -25,7 +25,7 @@ int main() {
 	Humidity h;
 	humidity_create(&h, UID); 
 
-	// Add device to ip connection
+	// Add device to IP connection
 	if(ipcon_add_device(&ipcon, &h) < 0) {
 		fprintf(stderr, "Could not connect to Brick\n");
 		exit(1);
@@ -41,5 +41,5 @@ int main() {
 	humidity_register_callback(&h, HUMIDITY_CALLBACK_HUMIDITY, cb_humidity);
 
 	printf("Press ctrl+c to close\n");
-	ipcon_join_thread(&ipcon); // Join mainloop of ip connection
+	ipcon_join_thread(&ipcon); // Join mainloop of IP connection
 }
