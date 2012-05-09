@@ -14,8 +14,7 @@ class Example
 		// Don't use device before it is added to a connection
 
 		// Get current humidity (unit is %RH/10)
-		ushort humidity;
-		hum.GetHumidity(out humidity);
+		ushort humidity = hum.GetHumidity();
 
 		System.Console.WriteLine("Humidity: " + humidity/10.0 + " %RH");
 
