@@ -13,7 +13,7 @@ def cb_reached(humidity):
     if humidity < 30*10:
         print('Humidity too low: ' + str(humidity/10.0) + ' %RH')
     if humidity > 60*10:
-        print('Humidity too high ' + str(humidity/10.0) + ' %RH')
+        print('Humidity too high: ' + str(humidity/10.0) + ' %RH')
 
     print('Recommended humiditiy for human comfort is 30 to 60 %RH.')
 
