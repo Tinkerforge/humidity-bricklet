@@ -21,7 +21,7 @@ ipcon.add_device h # Add device to IP connection
 h.set_humidity_callback_period 1000
 
 # Register humidity callback (parameter has unit %RH/10)
-h.register_callback BrickletHumidity::CALLBACK_HUMIDITY, do |rh|
+h.register_callback(BrickletHumidity::CALLBACK_HUMIDITY) do |rh|
   puts "Relative Humidity: #{rh/10.0}  %RH"
 end
 

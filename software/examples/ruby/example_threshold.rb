@@ -19,7 +19,7 @@ ipcon.add_device h # Add device to IP connection
 h.set_debounce_period 10000
 
 # Register callback for humidity outside of 30 to 60 %RH
-h.register_callback BrickletHumidity::CALLBACK_HUMIDITY_REACHED, do |humidity|
+h.register_callback(BrickletHumidity::CALLBACK_HUMIDITY_REACHED) do |humidity|
   if humidity < 30*10
     puts "Humidity too low: #{humidity/10.0} %RH"
   end
