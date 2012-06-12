@@ -50,6 +50,7 @@ int main() {
 	// Configure threshold for "outside of 30 to 60 %RH" (unit is %RH/10)
 	humidity_set_humidity_callback_threshold(&h, 'o', 30*10, 60*10);
 
-	printf("Press ctrl+c to close\n");
-	ipcon_join_thread(&ipcon); // Join mainloop of IP connection
+	printf("Press key to exit\n");
+	getchar();
+	ipcon_destroy(&ipcon);
 }

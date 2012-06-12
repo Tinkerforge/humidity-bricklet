@@ -40,6 +40,7 @@ int main() {
 	// Register humidity callback to function cb_humidity
 	humidity_register_callback(&h, HUMIDITY_CALLBACK_HUMIDITY, cb_humidity);
 
-	printf("Press ctrl+c to close\n");
-	ipcon_join_thread(&ipcon); // Join mainloop of IP connection
+	printf("Press key to exit\n");
+	getchar();
+	ipcon_destroy(&ipcon);
 }

@@ -22,7 +22,7 @@ public class ExampleSimple {
 
 		System.out.println("Relative Humidity: " + humidity/10.0 + " %RH");
 
-		System.out.println("Press ctrl+c to exit");
-		ipcon.joinThread();
+		System.console().readLine("Press key to exit\n");
+		ipcon.destroy();
 	}
 }

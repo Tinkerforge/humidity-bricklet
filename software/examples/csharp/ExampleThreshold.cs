@@ -37,7 +37,8 @@ class Example
 		// Configure threshold for "outside of 30 to 60 %RH" (unit is %RH/10)
 		hum.SetHumidityCallbackThreshold('o', 30*10, 60*10);
 
-		System.Console.WriteLine("Press ctrl+c to exit");
-		ipcon.JoinThread();
+		System.Console.WriteLine("Press key to exit");
+		System.Console.ReadKey();
+		ipcon.Destroy();
 	}
 }

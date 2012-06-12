@@ -36,6 +36,7 @@ int main() {
 
 	printf("Relative Humidity: %f %%RH\n", humidity/10.0);
 
-	printf("Press ctrl+c to close\n");
-	ipcon_join_thread(&ipcon); // Join mainloop of IP connection
+	printf("Press key to exit\n");
+	getchar();
+	ipcon_destroy(&ipcon);
 }
