@@ -1,5 +1,5 @@
 /* humidity-bricklet
- * Copyright (C) 2011 Olaf Lüke <olaf@tinkerforge.com>
+ * Copyright (C) 2011-2012 Olaf Lüke <olaf@tinkerforge.com>
  *
  * humidity.c: Implementation of Humidity Bricklet messages
  *
@@ -21,10 +21,9 @@
 
 #include "humidity.h"
 
-#include <adc/adc.h>
-
 #include "bricklib/bricklet/bricklet_communication.h"
 #include "bricklib/utility/util_definitions.h"
+#include "bricklib/drivers/adc/adc.h"
 #include "brickletlib/bricklet_entry.h"
 #include "brickletlib/bricklet_simple.h"
 #include "config.h"
@@ -56,13 +55,18 @@ const SimpleMessageProperty smp[] = {
 };
 
 const SimpleUnitProperty sup[] = {
-	{humidity_from_analog_value, SIMPLE_SIGNEDNESS_UINT, TYPE_HUMIDITY, TYPE_HUMIDITY_REACHED, SIMPLE_UNIT_ANALOG_VALUE}, // humidity
-	{analog_value_from_mc, SIMPLE_SIGNEDNESS_UINT, TYPE_ANALOG_VALUE, TYPE_ANALOG_VALUE_REACHED, SIMPLE_UNIT_ANALOG_VALUE}, // analog value
+	{humidity_from_analog_value, SIMPLE_SIGNEDNESS_UINT, FID_HUMIDITY, FID_HUMIDITY_REACHED, SIMPLE_UNIT_ANALOG_VALUE}, // humidity
+	{analog_value_from_mc, SIMPLE_SIGNEDNESS_UINT, FID_ANALOG_VALUE, FID_ANALOG_VALUE_REACHED, SIMPLE_UNIT_ANALOG_VALUE}, // analog value
 };
 
+const uint8_t smp_length = sizeof(smp);
 
-void invocation(uint8_t com, uint8_t *data) {
+void invocation(const ComType com, const uint8_t *data) {
 	simple_invocation(com, data);
+
+	if(((MessageHeader*)data)->fid > FID_LAST) {
+		BA->com_return_error(data, sizeof(MessageHeader), MESSAGE_ERROR_CODE_NOT_SUPPORTED, com);
+	}
 }
 
 void constructor(void) {
@@ -76,11 +80,11 @@ void destructor(void) {
 	adc_channel_disable(BS->adc_channel);
 }
 
-int32_t analog_value_from_mc(int32_t value) {
+int32_t analog_value_from_mc(const int32_t value) {
 	return (uint16_t)BA->adc_channel_get_data(BS->adc_channel);
 }
 
-int32_t humidity_from_analog_value(int32_t value) {
+int32_t humidity_from_analog_value(const int32_t value) {
 	BC->humidity_avg_sum += value;
 
 	if(BC->tick % HUMIDITY_AVERAGE == 0) {
@@ -102,6 +106,6 @@ int32_t humidity_from_analog_value(int32_t value) {
 	return BC->humidity_avg;
 }
 
-void tick(uint8_t tick_type) {
+void tick(const uint8_t tick_type) {
 	simple_tick(tick_type);
 }
