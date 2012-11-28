@@ -18,11 +18,11 @@ def cb_reached(humidity):
     print('Recommended humiditiy for human comfort is 30 to 60 %RH.')
 
 if __name__ == "__main__":
-    ipcon = IPConnection(HOST, PORT) # Create IP connection to brickd
+    ipcon = IPConnection() # Create IP connection
+    h = Humidity(UID, ipcon) # Create device object
 
-    h = Humidity(UID) # Create device object
-    ipcon.add_device(h) # Add device to IP connection
-    # Don't use device before it is added to a connection
+    ipcon.connect(HOST, PORT) # Connect to brickd
+    # Don't use device before ipcon is connected
 
     # Get threshold callbacks with a debounce time of 10 seconds (10000ms)
     h.set_debounce_period(10000)

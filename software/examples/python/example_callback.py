@@ -13,11 +13,11 @@ def cb_humidity(rh):
     print('Relative Humidity: ' + str(rh/10.0) + ' %RH')
 
 if __name__ == "__main__":
-    ipcon = IPConnection(HOST, PORT) # Create IP connection to brickd
+    ipcon = IPConnection() # Create IP connection
+    h = Humidity(UID, ipcon) # Create device object
 
-    h = Humidity(UID) # Create device object
-    ipcon.add_device(h) # Add device to IP connection
-    # Don't use device before it is added to a connection
+    ipcon.connect(HOST, PORT) # Connect to brickd
+    # Don't use device before ipcon is connected
 
     # Set Period for rh callback to 1s (1000ms)
     # Note: The callback is only called every second if the 
@@ -28,4 +28,3 @@ if __name__ == "__main__":
     h.register_callback(h.CALLBACK_HUMIDITY, cb_humidity)
 
     raw_input('Press key to exit\n') # Use input() in Python 3
-    ipcon.destroy()
