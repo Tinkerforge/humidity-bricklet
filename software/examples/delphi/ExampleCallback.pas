@@ -12,7 +12,7 @@ type
     ipcon: TIPConnection;
     h: TBrickletHumidity;
   public
-    procedure HumidityCB(const humidity: word);
+    procedure HumidityCB(sender: TObject; const humidity: word);
     procedure Execute;
   end;
 
@@ -25,22 +25,22 @@ var
   e: TExample;
 
 { Callback function for humidity callback (parameter has unit %RH/10) }
-procedure TExample.HumidityCB(const humidity: word);
+procedure TExample.HumidityCB(sender: TObject; const humidity: word);
 begin
   WriteLn(Format('Humidity: %f %%RH', [humidity/10.0]));
 end;
 
 procedure TExample.Execute;
 begin
-  { Create IP connection to brickd }
-  ipcon := TIPConnection.Create(HOST, PORT);
+  { Create IP connection }
+  ipcon := TIPConnection.Create();
 
   { Create device object }
-  h := TBrickletHumidity.Create(UID);
+  h := TBrickletHumidity.Create(UID, ipcon);
 
-  { Add device to IP connection }
-  ipcon.AddDevice(h);
-  { Don't use device before it is added to a connection }
+  { Connect to brickd }
+  ipcon.Connect(HOST, PORT);
+  { Don't use device before ipcon is connected }
 
   { Set Period for humidity callback to 1s (1000ms)
     Note: The callback is only called every second if the
@@ -52,7 +52,6 @@ begin
 
   WriteLn('Press key to exit');
   ReadLn;
-  ipcon.Destroy;
 end;
 
 begin

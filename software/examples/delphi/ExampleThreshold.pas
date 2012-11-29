@@ -12,7 +12,7 @@ type
     ipcon: TIPConnection;
     h: TBrickletHumidity;
   public
-    procedure ReachedCB(const humidity: word);
+    procedure ReachedCB(sender: TObject; const humidity: word);
     procedure Execute;
   end;
 
@@ -25,7 +25,7 @@ var
   e: TExample;
 
 { Callback for humidity outside of 30 to 60 %RH }
-procedure TExample.ReachedCB(const humidity: word);
+procedure TExample.ReachedCB(sender: TObject; const humidity: word);
 begin
   if (humidity < 30*10) then begin
     WriteLn(Format('Humidity too low: %f %%RH', [humidity/10.0]));
@@ -38,15 +38,15 @@ end;
 
 procedure TExample.Execute;
 begin
-  { Create IP connection to brickd }
-  ipcon := TIPConnection.Create(HOST, PORT);
+  { Create IP connection }
+  ipcon := TIPConnection.Create();
 
   { Create device object }
-  h := TBrickletHumidity.Create(UID);
+  h := TBrickletHumidity.Create(UID, ipcon);
 
-  { Add device to IP connection }
-  ipcon.AddDevice(h);
-  { Don't use device before it is added to a connection }
+  { Connect to brickd }
+  ipcon.Connect(HOST, PORT);
+  { Don't use device before ipcon is connected }
 
   { Get threshold callbacks with a debounce time of 10 seconds (10000ms) }
   h.SetDebouncePeriod(10000);
@@ -59,7 +59,6 @@ begin
 
   WriteLn('Press key to exit');
   ReadLn;
-  ipcon.Destroy;
 end;
 
 begin
