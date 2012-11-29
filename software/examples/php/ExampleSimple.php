@@ -10,11 +10,11 @@ $host = 'localhost';
 $port = 4223;
 $uid = '7bA'; // Change to your UID
 
-$ipcon = new IPConnection($host, $port); // Create IP connection to brickd
-$h = new BrickletHumidity($uid); // Create device object
+$ipcon = new IPConnection(); // Create IP connection
+$h = new BrickletHumidity($uid, $ipcon); // Create device object
 
-$ipcon->addDevice($h); // Add device to IP connection
-// Don't use device before it is added to a connection
+$ipcon->connect($host, $port); // Connect to brickd
+// Don't use device before ipcon is connected
 
 // Get current humidity (unit is %RH/10)
 $rh = $h->getHumidity() / 10.0;
@@ -23,6 +23,5 @@ echo "Relative Humidity: $rh %RH\n";
 
 echo "Press key to exit\n";
 fgetc(fopen('php://stdin', 'r'));
-$ipcon->destroy();
 
 ?>
