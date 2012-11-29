@@ -34,4 +34,3 @@ if __name__ == "__main__":
     h.set_humidity_callback_threshold('o', 30*10, 60*10)
 
     raw_input('Press key to exit\n') # Use input() in Python 3
-    ipcon.destroy()
