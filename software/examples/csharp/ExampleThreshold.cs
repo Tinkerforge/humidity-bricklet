@@ -7,7 +7,7 @@ class Example
 	private static string UID = "ABC"; // Change to your UID
 
 	// Callback for humidity outside of 30 to 60 %RH
-	static void ReachedCB(ushort humidity)
+	static void ReachedCB(object sender, int humidity)
 	{
 		if(humidity < 30*10)
 		{
@@ -23,22 +23,22 @@ class Example
 
 	static void Main() 
 	{
-		IPConnection ipcon = new IPConnection(HOST, PORT); // Create connection to brickd
-		BrickletHumidity hum = new BrickletHumidity(UID); // Create device object
-		ipcon.AddDevice(hum); // Add device to IP connection
-		// Don't use device before it is added to a connection
+		IPConnection ipcon = new IPConnection(); // Create IP connection
+		BrickletHumidity hum = new BrickletHumidity(UID, ipcon); // Create device object
+
+		ipcon.Connect(HOST, PORT); // Connect to brickd
+		// Don't use device before ipcon is connected
 
 		// Get threshold callbacks with a debounce time of 1 seconds (1000ms)
 		hum.SetDebouncePeriod(1000);
 
 		// Register threshold reached callback to function ReachedCB
-		hum.RegisterCallback(new BrickletHumidity.HumidityReached(ReachedCB));
+		hum.HumidityReached += ReachedCB;
 
 		// Configure threshold for "outside of 30 to 60 %RH" (unit is %RH/10)
 		hum.SetHumidityCallbackThreshold('o', 30*10, 60*10);
 
 		System.Console.WriteLine("Press key to exit");
 		System.Console.ReadKey();
-		ipcon.Destroy();
 	}
 }

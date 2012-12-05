@@ -8,18 +8,16 @@ class Example
 
 	static void Main() 
 	{
-		IPConnection ipcon = new IPConnection(HOST, PORT); // Create connection to brickd
-		BrickletHumidity hum = new BrickletHumidity(UID); // Create device object
-		ipcon.AddDevice(hum); // Add device to IP connection
-		// Don't use device before it is added to a connection
+		IPConnection ipcon = new IPConnection(); // Create IP connection
+		BrickletHumidity hum = new BrickletHumidity(UID, ipcon); // Create device object
+
+		ipcon.Connect(HOST, PORT); // Connect to brickd
+		// Don't use device before ipcon is connected
 
 		// Get current humidity (unit is %RH/10)
-		ushort humidity = hum.GetHumidity();
+		int humidity = hum.GetHumidity();
 
 		System.Console.WriteLine("Humidity: " + humidity/10.0 + " %RH");
-
 		System.Console.WriteLine("Press key to exit");
-		System.Console.ReadKey();
-		ipcon.Destroy();
 	}
 }
