@@ -10,6 +10,8 @@
 
 // Callback function for humidity callback (parameter has unit %RH/10)
 void cb_humidity(uint16_t humidity, void *user_data) {
+	(void)user_data; // avoid unused parameter warning
+
 	printf("Relative Humidity: %f %%RH\n", humidity/10.0);
 }
 
@@ -35,10 +37,10 @@ int main() {
 	humidity_set_humidity_callback_period(&h, 1000);
 
 	// Register humidity callback to function cb_humidity
-	humidity_register_callback(&h, 
-	                           HUMIDITY_CALLBACK_HUMIDITY, 
-							   cb_humidity,
-							   NULL);
+	humidity_register_callback(&h,
+	                           HUMIDITY_CALLBACK_HUMIDITY,
+	                           cb_humidity,
+	                           NULL);
 
 	printf("Press key to exit\n");
 	getchar();

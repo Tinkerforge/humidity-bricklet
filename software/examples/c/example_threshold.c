@@ -10,6 +10,8 @@
 
 // Callback for humidity outside of 30 to 60 %RH
 void cb_reached(uint16_t humidity, void *user_data) {
+	(void)user_data; // avoid unused parameter warning
+
 	if(humidity < 30*10) {
 		printf("Humidity too low: %f %%RH\n", humidity/10.0);
 	}
@@ -43,7 +45,7 @@ int main() {
 	humidity_register_callback(&h,
 	                           HUMIDITY_CALLBACK_HUMIDITY_REACHED,
 	                           cb_reached,
-							   NULL);
+	                           NULL);
 
 	// Configure threshold for "outside of 30 to 60 %RH" (unit is %RH/10)
 	humidity_set_humidity_callback_threshold(&h, 'o', 30*10, 60*10);
