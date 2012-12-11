@@ -44,7 +44,7 @@ int main() {
 	// Register threshold reached callback to function cb_reached
 	humidity_register_callback(&h,
 	                           HUMIDITY_CALLBACK_HUMIDITY_REACHED,
-	                           cb_reached,
+	                           (void *)cb_reached,
 	                           NULL);
 
 	// Configure threshold for "outside of 30 to 60 %RH" (unit is %RH/10)

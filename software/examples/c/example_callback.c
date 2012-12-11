@@ -39,7 +39,7 @@ int main() {
 	// Register humidity callback to function cb_humidity
 	humidity_register_callback(&h,
 	                           HUMIDITY_CALLBACK_HUMIDITY,
-	                           cb_humidity,
+	                           (void *)cb_humidity,
 	                           NULL);
 
 	printf("Press key to exit\n");
