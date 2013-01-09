@@ -12,7 +12,7 @@ type
     ipcon: TIPConnection;
     h: TBrickletHumidity;
   public
-    procedure HumidityCB(sender: TObject; const humidity: word);
+    procedure HumidityCB(sender: TBrickletHumidity; const humidity: word);
     procedure Execute;
   end;
 
@@ -25,7 +25,7 @@ var
   e: TExample;
 
 { Callback function for humidity callback (parameter has unit %RH/10) }
-procedure TExample.HumidityCB(sender: TObject; const humidity: word);
+procedure TExample.HumidityCB(sender: TBrickletHumidity; const humidity: word);
 begin
   WriteLn(Format('Humidity: %f %%RH', [humidity/10.0]));
 end;

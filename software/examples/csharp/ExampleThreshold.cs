@@ -7,7 +7,7 @@ class Example
 	private static string UID = "ABC"; // Change to your UID
 
 	// Callback for humidity outside of 30 to 60 %RH
-	static void ReachedCB(object sender, int humidity)
+	static void ReachedCB(BrickletHumidity sender, int humidity)
 	{
 		if(humidity < 30*10)
 		{

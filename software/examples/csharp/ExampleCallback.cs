@@ -7,7 +7,7 @@ class Example
 	private static string UID = "ABC"; // Change to your UID
 
 	// Callback function for humidity callback (parameter has unit %RH/10)
-	static void HumidityCB(object sender, int humidity)
+	static void HumidityCB(BrickletHumidity sender, int humidity)
 	{
 		System.Console.WriteLine("Relative Humidity: " + humidity/10.0 + " %RH");
 	}

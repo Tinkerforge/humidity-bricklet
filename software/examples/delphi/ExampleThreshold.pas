@@ -12,7 +12,7 @@ type
     ipcon: TIPConnection;
     h: TBrickletHumidity;
   public
-    procedure ReachedCB(sender: TObject; const humidity: word);
+    procedure ReachedCB(sender: TBrickletHumidity; const humidity: word);
     procedure Execute;
   end;
 
@@ -25,7 +25,7 @@ var
   e: TExample;
 
 { Callback for humidity outside of 30 to 60 %RH }
-procedure TExample.ReachedCB(sender: TObject; const humidity: word);
+procedure TExample.ReachedCB(sender: TBrickletHumidity; const humidity: word);
 begin
   if (humidity < 30*10) then begin
     WriteLn(Format('Humidity too low: %f %%RH', [humidity/10.0]));
