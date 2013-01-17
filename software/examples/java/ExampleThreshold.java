@@ -23,7 +23,7 @@ public class ExampleThreshold {
 
 		// Add and implement humidity reached listener 
 		// (called if humidity is outside of 30 to 60 %RH)
-		hum.addListener(new BrickletHumidity.HumidityReachedListener() {
+		hum.addHumidityReachedListener(new BrickletHumidity.HumidityReachedListener() {
 			public void humidityReached(int humidity) {
 				if(humidity < 30*10) {
 					System.out.println("Humidity too low: " + humidity/10.0 + " %RH");

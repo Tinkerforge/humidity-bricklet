@@ -21,7 +21,7 @@ public class ExampleCallback {
 		hum.setHumidityCallbackPeriod(1000);
 
 		// Add and implement humidity listener (called if humidity changes)
-		hum.addListener(new BrickletHumidity.HumidityListener() {
+		hum.addHumidityListener(new BrickletHumidity.HumidityListener() {
 			public void humidity(int humidity) {
 				System.out.println("Relative Humidity: " + humidity/10.0 + " %RH");
 			}
