@@ -16,7 +16,7 @@ public class ExampleSimple {
 		// Don't use device before ipcon is connected
 
 		// Get current humidity (unit is %RH/10)
-		int humidity = hum.getHumidity(); // Can throw IPConnection.TimeoutException
+		int humidity = hum.getHumidity(); // Can throw com.tinkerforge.TimeoutException
 
 		System.out.println("Relative Humidity: " + humidity/10.0 + " %RH");
 
