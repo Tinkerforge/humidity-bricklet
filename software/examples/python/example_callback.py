@@ -28,3 +28,4 @@ if __name__ == "__main__":
     h.register_callback(h.CALLBACK_HUMIDITY, cb_humidity)
 
     raw_input('Press key to exit\n') # Use input() in Python 3
+    ipcon.disconnect()

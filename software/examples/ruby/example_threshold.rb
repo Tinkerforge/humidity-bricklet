@@ -36,3 +36,4 @@ h.set_humidity_callback_threshold 'o', 30*10, 60*10
 
 puts 'Press key to exit'
 $stdin.gets
+ipcon.disconnect

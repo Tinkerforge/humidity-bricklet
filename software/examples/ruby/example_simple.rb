@@ -22,3 +22,4 @@ puts "Relative Humidity: #{rh}  %RH"
 
 puts 'Press key to exit'
 $stdin.gets
+ipcon.disconnect
