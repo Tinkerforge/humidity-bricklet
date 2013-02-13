@@ -18,7 +18,9 @@ class Example
 		int humidity = hum.GetHumidity();
 
 		System.Console.WriteLine("Humidity: " + humidity/10.0 + " %RH");
+
 		System.Console.WriteLine("Press key to exit");
+		System.Console.ReadKey();
 		ipcon.Disconnect();
 	}
 }
