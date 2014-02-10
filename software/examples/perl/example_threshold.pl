@@ -7,8 +7,8 @@ use constant HOST => 'localhost';
 use constant PORT => 4223;
 use constant UID => '7bA'; # Change to your UID
 
-my $ipcon = IPConnection->new(); # Create IP connection
-my $h = BrickletHumidity->new(&UID, $ipcon); # Create device object
+my $ipcon = Tinkerforge::IPConnection->new(); # Create IP connection
+my $h = Tinkerforge::BrickletHumidity->new(&UID, $ipcon); # Create device object
 
 # Callback function for humidity callback (parameter has unit %RH/10)
 sub cb_reached
