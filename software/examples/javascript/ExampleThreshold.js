@@ -3,10 +3,10 @@ var BrickletHumidity = require('Tinkerforge/BrickletHumidity');
 
 var HOST = 'localhost';
 var PORT = 4223;
-var UID = '7bA'; //Change to your UID
+var UID = '7bA';//Change to your UID
 
-var ipcon = new IPConnection(); //Create IP connection
-var h = new BrickletHumidity(UID, ipcon); //Create device object
+var ipcon = new IPConnection();//Create IP connection
+var h = new BrickletHumidity(UID, ipcon);//Create device object
 
 ipcon.connect(HOST, PORT,
     function(error) {
