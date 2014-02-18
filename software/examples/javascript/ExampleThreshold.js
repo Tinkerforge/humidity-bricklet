@@ -1,12 +1,11 @@
-var IPConnection = require('Tinkerforge/IPConnection');
-var BrickletHumidity = require('Tinkerforge/BrickletHumidity');
+var Tinkerforge = require('tinkerforge');
 
 var HOST = 'localhost';
 var PORT = 4223;
 var UID = '7bA';//Change to your UID
 
-var ipcon = new IPConnection();//Create IP connection
-var h = new BrickletHumidity(UID, ipcon);//Create device object
+var ipcon = new Tinkerforge.IPConnection();//Create IP connection
+var h = new Tinkerforge.BrickletHumidity(UID, ipcon);//Create device object
 
 ipcon.connect(HOST, PORT,
     function(error) {
@@ -15,7 +14,7 @@ ipcon.connect(HOST, PORT,
 );// Connect to brickd
 
 //Don't use device before ipcon is connected
-ipcon.on(IPConnection.CALLBACK_CONNECTED,
+ipcon.on(Tinkerforge.IPConnection.CALLBACK_CONNECTED,
     function(connectReason) {
         // Set threshold callbacks with a debounce time of 10 seconds (10000ms)
         h.setDebouncePeriod(10000); 
@@ -25,7 +24,7 @@ ipcon.on(IPConnection.CALLBACK_CONNECTED,
 );
 
 // Register threshold reached callback
-h.on(BrickletHumidity.CALLBACK_HUMIDITY_REACHED,
+h.on(Tinkerforge.BrickletHumidity.CALLBACK_HUMIDITY_REACHED,
     // Callback for humidity outside of 30 to 60 %RH
     function(humidity) {
         if(humidity < 30*10) {
