@@ -18,8 +18,8 @@ ipcon.on(Tinkerforge.IPConnection.CALLBACK_CONNECTED,
     function(connectReason) {
         // Get current humidity (unit is %RH/10)
         h.getHumidity(
-            function(rh) {
-                console.log('Relative Humidity: '+rh/10+' %RH');
+            function(humidity) {
+                console.log('Relative Humidity: '+humidity/10+' %RH');
             },
             function(error) {
                 console.log('Error: '+error);

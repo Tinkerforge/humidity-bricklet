@@ -23,8 +23,9 @@ ipcon.on(Tinkerforge.IPConnection.CALLBACK_CONNECTED,
     }
 );
 
-// Register position callback
+// Register humidity callback
 h.on(Tinkerforge.BrickletHumidity.CALLBACK_HUMIDITY,
+    // Callback function for humidity callback (parameter has unit %RH/10)
     function(humidity) {
         console.log('Relative Humidity: '+humidity/10+' %RH');
     }

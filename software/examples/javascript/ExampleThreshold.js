@@ -17,7 +17,7 @@ ipcon.connect(HOST, PORT,
 ipcon.on(Tinkerforge.IPConnection.CALLBACK_CONNECTED,
     function(connectReason) {
         // Set threshold callbacks with a debounce time of 10 seconds (10000ms)
-        h.setDebouncePeriod(10000); 
+        h.setDebouncePeriod(500); 
         // Configure threshold for "outside of 30 to 60 %RH" (unit is %RH/10)
         h.setHumidityCallbackThreshold('o', 30*10, 60*10);    
     }
