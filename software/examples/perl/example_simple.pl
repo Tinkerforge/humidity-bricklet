@@ -15,10 +15,9 @@ $ipcon->connect(&HOST, &PORT); # Connect to brickd
 
 # Get current humidity (unit is %RH/10)
 my $rh = $h->get_humidity()/10.0;
+print "Relative Humidity: $rh RH%\n";
 
-print "\nRelative Humidity: ".$rh." RH%\n";
-
-print "\nPress any key to exit...\n";
+print "Press any key to exit...\n";
 <STDIN>;
 $ipcon->disconnect();
 

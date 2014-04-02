@@ -14,8 +14,10 @@ my $h = Tinkerforge::BrickletHumidity->new(&UID, $ipcon); # Create device object
 sub cb_humidity
 {
     my ($rh) = @_;
-    print "\nRelative Humidity: ".$rh/10.0." RH%\n";
+
+    print "Relative Humidity: ".$rh/10.0." RH%\n";
 }
+
 $ipcon->connect(&HOST, &PORT); # Connect to brickd
 # Don't use device before ipcon is connected
 
@@ -27,7 +29,7 @@ $h->set_humidity_callback_period(1000);
 # Register humidity callback to function cb_humidity
 $h->register_callback($h->CALLBACK_HUMIDITY, 'cb_humidity');
 
-print "\nPress any key to exit...\n";
+print "Press any key to exit...\n";
 <STDIN>;
 $ipcon->disconnect();
 

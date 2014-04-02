@@ -15,16 +15,16 @@ sub cb_reached
 {
     my ($humidity) = @_;
 
-    if($humidity < 30*10)
+    if ($humidity < 30*10)
     {
-        print "\nHumidity too low: ".$humidity/10.0." RH%\n";
+        print "Humidity too low: ".$humidity/10.0." RH%\n";
     }   
-    if($humidity > 60*10)
+    elsif ($humidity > 60*10)
     {
-        print "\nHumidity too high: ".$humidity/10.0." RH%\n";
+        print "Humidity too high: ".$humidity/10.0." RH%\n";
     } 
 
-    print "\nRecommended humiditiy for human comfort is 30 to 60 %RH.\n";
+    print "Recommended humiditiy for human comfort is 30 to 60 %RH.\n";
 }
 
 $ipcon->connect(&HOST, &PORT); # Connect to brickd
@@ -39,7 +39,7 @@ $h->register_callback($h->CALLBACK_HUMIDITY_REACHED, 'cb_reached');
 # Configure threshold for "outside of 30 to 60 %RH" (unit is %RH/10)
 $h->set_humidity_callback_threshold('o', 30*10, 60*10);
 
-print "\nPress any key to exit...\n";
+print "Press any key to exit...\n";
 <STDIN>;
 $ipcon->disconnect();
 
