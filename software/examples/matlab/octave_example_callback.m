@@ -17,13 +17,13 @@ function octave_example_callback
     h.setHumidityCallbackPeriod(1000);
 
     % Register humidity callback to function cb_humidity
-    h.addHumidityListener("cb_humidity");
+    h.addHumidityCallback(@cb_humidity);
 
-    input("\nPress any key to exit...\n", "s");
+    input("Press any key to exit...\n", "s");
     ipcon.disconnect();
 end
 
 % Callback function for humidity callback (parameter has unit %RH/10)
-function cb_humidity(humidity_value)
-    fprintf("Relative Humidity: %g %%RH\n", humidity_value/10);
+function cb_humidity(e)
+    fprintf("Relative Humidity: %g %%RH\n", e.humidity/10);
 end

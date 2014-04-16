@@ -15,21 +15,21 @@ function octave_example_threshold
     h.setDebouncePeriod(10000);
 
     % Register threshold reached callback to function cb_reached
-    h.addHumidityReachedListener("cb_reached");
+    h.addHumidityReachedCallback(@cb_reached);
 
     % Configure threshold for "outside of 30 to 60 %RH" (unit is %RH/10)
     h.setHumidityCallbackThreshold(h.THRESHOLD_OPTION_OUTSIDE, 30*10, 60*10);
 
-    input("\nPress any key to exit...\n", "s");
+    input("Press any key to exit...\n", "s");
     ipcon.disconnect();
 end
 
 % Callback for humidity outside of 30 to 60 %RH
-function cb_reached(humidity_value)
-    if humidity_value < 30*10
-        fprintf("Humidity too low: %g %%RH\n", humidity_value/10);
-    elseif humidity_value > 60*10
-        fprintf("Humidity too high: %g %%RH\n", humidity_value/10);
+function cb_reached(e)
+    if e.humidity < 30*10
+        fprintf("Humidity too low: %g %%RH\n", e.humidity/10);
+    elseif e.humidity > 60*10
+        fprintf("Humidity too high: %g %%RH\n", e.humidity/10);
     end
     fprintf("Recommended humiditiy for human comfort is 30 to 60 %%RH.\n");
 end

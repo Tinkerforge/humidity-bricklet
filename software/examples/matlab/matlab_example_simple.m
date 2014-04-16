@@ -13,10 +13,9 @@ function matlab_example_simple
     % Don't use device before ipcon is connected
 
     % Get current humidity (unit is %RH/10)
-    rh = h.getHumidity()/10;
+    rh = h.getHumidity();
+    fprintf('Relative Humidity: %g %%RH\n', rh/10);
 
-    fprintf('Relative Humidity: %g %%RH\n', rh);
-
-    input('\nPress any key to exit...\n', 's');
+    input('Press any key to exit...\n', 's');
     ipcon.disconnect();
 end

@@ -18,13 +18,13 @@ function matlab_example_callback
     h.setHumidityCallbackPeriod(1000);
 
     % Register humidity callback to function cb_humidity
-    set(h, 'HumidityCallback', @(h, e)cb_humidity(e.humidity/10));
+    set(h, 'HumidityCallback', @(h, e) cb_humidity(e));
 
-    input('\nPress any key to exit...\n', 's');
+    input('Press any key to exit...\n', 's');
     ipcon.disconnect();
 end
 
 % Callback function for humidity callback (parameter has unit %RH/10)
-function cb_humidity(humidity_value)
-    fprintf('Relative Humidity: %g %%RH\n', humidity_value);
+function cb_humidity(e)
+    fprintf('Relative Humidity: %g %%RH\n', e.humidity/10);
 end

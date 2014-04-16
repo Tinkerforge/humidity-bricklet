@@ -16,21 +16,21 @@ function matlab_example_threshold
     h.setDebouncePeriod(10000);
 
     % Register threshold reached callback to function cb_reached
-    set(h, 'HumidityReachedCallback', @(h, e)cb_reached(e.humidity/10));
+    set(h, 'HumidityReachedCallback', @(h, e) cb_reached(e));
 
     % Configure threshold for "outside of 30 to 60 %RH" (unit is %RH/10)
     h.setHumidityCallbackThreshold('o', 30*10, 60*10);
 
-    input('\nPress any key to exit...\n', 's');
+    input('Press any key to exit...\n', 's');
     ipcon.disconnect();
 end
 
 % Callback for humidity outside of 30 to 60 %RH
-function cb_reached(humidity_value)
-    if humidity_value < 30
-        fprintf('Humidity too low: %g %%RH\n', humidity_value);
-    elseif humidity_value > 60
-        fprintf('Humidity too high: %g %%RH\n', humidity_value);
+function cb_reached(e)
+    if e.humidity < 30*10
+        fprintf('Humidity too low: %g %%RH\n', e.humidity/10);
+    elseif e.humidity > 60*10
+        fprintf('Humidity too high: %g %%RH\n', e.humidity/10);
     end
     fprintf('Recommended humiditiy for human comfort is 30 to 60 %%RH.\n')
 end
