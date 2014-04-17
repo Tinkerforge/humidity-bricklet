@@ -13,7 +13,7 @@ function octave_example_simple
 
     % Get current humidity (unit is %RH/10)
     rh = h.getHumidity();
-    fprintf("Relative Humidity: %g %%RH\n", rh/10);
+    fprintf("Relative Humidity: %g %%RH\n", rh/10.0);
 
     input("Press any key to exit...\n", "s");
     ipcon.disconnect();

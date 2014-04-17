@@ -25,5 +25,5 @@ end
 
 % Callback function for humidity callback (parameter has unit %RH/10)
 function cb_humidity(e)
-    fprintf("Relative Humidity: %g %%RH\n", e.humidity/10);
+    fprintf("Relative Humidity: %g %%RH\n", e.humidity/10.0);
 end

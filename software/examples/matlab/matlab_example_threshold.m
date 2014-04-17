@@ -28,9 +28,9 @@ end
 % Callback for humidity outside of 30 to 60 %RH
 function cb_reached(e)
     if e.humidity < 30*10
-        fprintf('Humidity too low: %g %%RH\n', e.humidity/10);
+        fprintf('Humidity too low: %g %%RH\n', e.humidity/10.0);
     elseif e.humidity > 60*10
-        fprintf('Humidity too high: %g %%RH\n', e.humidity/10);
+        fprintf('Humidity too high: %g %%RH\n', e.humidity/10.0);
     end
     fprintf('Recommended humiditiy for human comfort is 30 to 60 %%RH.\n')
 end
