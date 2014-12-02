@@ -19,8 +19,8 @@ class Example
 
 		System.Console.WriteLine("Humidity: " + humidity/10.0 + " %RH");
 
-		System.Console.WriteLine("Press key to exit");
-		System.Console.ReadKey();
+		System.Console.WriteLine("Press enter to exit");
+		System.Console.ReadLine();
 		ipcon.Disconnect();
 	}
 }
