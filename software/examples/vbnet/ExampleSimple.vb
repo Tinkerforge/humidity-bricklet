@@ -18,7 +18,7 @@ Module ExampleSimple
         System.Console.WriteLine("Humidity: " + (humidity/10.0).ToString() + " %RH")
 
         System.Console.WriteLine("Press key to exit")
-        System.Console.ReadKey()
+        System.Console.ReadLine()
         ipcon.Disconnect()
     End Sub
 End Module

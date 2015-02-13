@@ -35,7 +35,7 @@ Module ExampleThreshold
         hum.SetHumidityCallbackThreshold("o"C, 30*10, 60*10)
 
         System.Console.WriteLine("Press key to exit")
-        System.Console.ReadKey()
+        System.Console.ReadLine()
         ipcon.Disconnect()
     End Sub
 End Module
