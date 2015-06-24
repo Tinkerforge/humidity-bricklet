@@ -52,13 +52,11 @@
                     // Callback function for humidity callback (parameter has unit %RH/10)
                     function(humidity) {
                         if(humidity < 30*10) {
-                            textArea.value += 'Humidity too low: '+humidity/10+' %RH';
+                            textArea.value += 'Humidity too low: '+humidity/10+' %RH\n';
                         }
-
                         if(humidity > 60*10) {
-                            textArea.value += 'Humidity too high: '+humidity/10+' %RH';
+                            textArea.value += 'Humidity too high: '+humidity/10+' %RH\n';
                         }
-                        textArea.value += '\n';
                         textArea.scrollTop = textArea.scrollHeight;
                     }
                 );
