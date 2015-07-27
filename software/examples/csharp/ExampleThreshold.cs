@@ -4,39 +4,31 @@ class Example
 {
 	private static string HOST = "localhost";
 	private static int PORT = 4223;
-	private static string UID = "ABC"; // Change to your UID
+	private static string UID = "XYZ"; // Change to your UID
 
-	// Callback for humidity outside of 30 to 60 %RH
-	static void ReachedCB(BrickletHumidity sender, int humidity)
+	// Callback function for humidity outside of 30 to 60 %RH (parameter has unit %RH/10)
+	static void HumidityReachedCB(BrickletHumidity sender, int humidity)
 	{
-		if(humidity < 30*10)
-		{
-			System.Console.WriteLine("Humidity too low: " + humidity/10.0 + " %RH");
-		}
-		if(humidity > 60*10)
-		{
-			System.Console.WriteLine("Humidity too high: " + humidity/10.0 + " %RH");
-		}
-
+		System.Console.WriteLine("Humidity: " + humidity/10.0 + " %RH");
 		System.Console.WriteLine("Recommended humiditiy for human comfort is 30 to 60 %RH.");
 	}
 
-	static void Main() 
+	static void Main()
 	{
 		IPConnection ipcon = new IPConnection(); // Create IP connection
-		BrickletHumidity hum = new BrickletHumidity(UID, ipcon); // Create device object
+		BrickletHumidity h = new BrickletHumidity(UID, ipcon); // Create device object
 
 		ipcon.Connect(HOST, PORT); // Connect to brickd
 		// Don't use device before ipcon is connected
 
 		// Get threshold callbacks with a debounce time of 10 seconds (10000ms)
-		hum.SetDebouncePeriod(10000);
+		h.SetDebouncePeriod(10000);
 
-		// Register threshold reached callback to function ReachedCB
-		hum.HumidityReached += ReachedCB;
+		// Register threshold reached callback to function HumidityReachedCB
+		h.HumidityReached += HumidityReachedCB;
 
 		// Configure threshold for "outside of 30 to 60 %RH" (unit is %RH/10)
-		hum.SetHumidityCallbackThreshold('o', 30*10, 60*10);
+		h.SetHumidityCallbackThreshold('o', 30*10, 60*10);
 
 		System.Console.WriteLine("Press enter to exit");
 		System.Console.ReadLine();

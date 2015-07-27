@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-# -*- coding: utf-8 -*-  
+# -*- coding: utf-8 -*-
 
 HOST = "localhost"
 PORT = 4223
@@ -9,8 +9,8 @@ from tinkerforge.ip_connection import IPConnection
 from tinkerforge.bricklet_humidity import Humidity
 
 # Callback function for humidity callback (parameter has unit %RH/10)
-def cb_humidity(rh):
-    print('Relative Humidity: ' + str(rh/10.0) + ' %RH')
+def cb_humidity(humidity):
+    print('Humidity: ' + str(humidity/10.0) + ' %RH')
 
 if __name__ == "__main__":
     ipcon = IPConnection() # Create IP connection
@@ -19,9 +19,9 @@ if __name__ == "__main__":
     ipcon.connect(HOST, PORT) # Connect to brickd
     # Don't use device before ipcon is connected
 
-    # Set Period for rh callback to 1s (1000ms)
-    # Note: The callback is only called every second if the 
-    #       humidity has changed since the last call!
+    # Set period for humidity callback to 1s (1000ms)
+    # Note: The humidity callback is only called every second
+    #       if the humidity has changed since the last call!
     h.set_humidity_callback_period(1000)
 
     # Register humidity callback to function cb_humidity

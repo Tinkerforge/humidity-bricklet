@@ -11,7 +11,7 @@
 void cb_humidity(uint16_t humidity, void *user_data) {
 	(void)user_data; // avoid unused parameter warning
 
-	printf("Relative Humidity: %f %%RH\n", humidity/10.0);
+	printf("Humidity: %f %%RH\n", humidity/10.0);
 }
 
 int main() {
@@ -21,7 +21,7 @@ int main() {
 
 	// Create device object
 	Humidity h;
-	humidity_create(&h, UID, &ipcon); 
+	humidity_create(&h, UID, &ipcon);
 
 	// Connect to brickd
 	if(ipcon_connect(&ipcon, HOST, PORT) < 0) {
@@ -30,9 +30,9 @@ int main() {
 	}
 	// Don't use device before ipcon is connected
 
-	// Set Period for humidity callback to 1s (1000ms)
-	// Note: The callback is only called every second if the 
-	//       humidity has changed since the last call!
+	// Set period for humidity callback to 1s (1000ms)
+	// Note: The humidity callback is only called every second
+	//       if the humidity has changed since the last call!
 	humidity_set_humidity_callback_period(&h, 1000);
 
 	// Register humidity callback to function cb_humidity

@@ -14,7 +14,7 @@ int main() {
 
 	// Create device object
 	Humidity h;
-	humidity_create(&h, UID, &ipcon); 
+	humidity_create(&h, UID, &ipcon);
 
 	// Connect to brickd
 	if(ipcon_connect(&ipcon, HOST, PORT) < 0) {
@@ -26,11 +26,11 @@ int main() {
 	// Get current humidity (unit is %RH/10)
 	uint16_t humidity;
 	if(humidity_get_humidity(&h, &humidity) < 0) {
-		fprintf(stderr, "Could not get value, probably timeout\n");
+		fprintf(stderr, "Could not get humidity, probably timeout\n");
 		exit(1);
 	}
 
-	printf("Relative Humidity: %f %%RH\n", humidity/10.0);
+	printf("Humidity: %f %%RH\n", humidity/10.0);
 
 	printf("Press key to exit\n");
 	getchar();
