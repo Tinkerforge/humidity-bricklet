@@ -19,7 +19,7 @@ public class ExampleThreshold {
 		h.setDebouncePeriod(10000);
 
 		// Configure threshold for "outside of 30 to 60 %RH" (unit is %RH/10)
-		h.setHumidityCallbackThreshold('o', (short)(30*10), (short)(60*10));
+		h.setHumidityCallbackThreshold('o', 30*10, 60*10);
 
 		// Add threshold reached listener for humidity outside of 30 to 60 %RH (parameter has unit %RH/10)
 		h.addHumidityReachedListener(new BrickletHumidity.HumidityReachedListener() {
