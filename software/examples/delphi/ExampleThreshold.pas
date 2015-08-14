@@ -12,27 +12,22 @@ type
     ipcon: TIPConnection;
     h: TBrickletHumidity;
   public
-    procedure ReachedCB(sender: TBrickletHumidity; const humidity: word);
+    procedure HumidityReachedCB(sender: TBrickletHumidity; const humidity: word);
     procedure Execute;
   end;
 
 const
   HOST = 'localhost';
   PORT = 4223;
-  UID = '9TU'; { Change to your UID }
+  UID = 'XYZ'; { Change to your UID }
 
 var
   e: TExample;
 
-{ Callback for humidity outside of 30 to 60 %RH }
-procedure TExample.ReachedCB(sender: TBrickletHumidity; const humidity: word);
+{ Callback procedure for humidity outside of 30 to 60 %RH (parameter has unit %RH/10) }
+procedure TExample.HumidityReachedCB(sender: TBrickletHumidity; const humidity: word);
 begin
-  if (humidity < 30*10) then begin
-    WriteLn(Format('Humidity too low: %f %%RH', [humidity/10.0]));
-  end
-  else begin
-    WriteLn(Format('Humidity too high: %f %%RH', [humidity/10.0]));
-  end;
+  WriteLn(Format('Humidity: %f %%RH', [humidity/10.0]));
   WriteLn('Recommended humiditiy for human comfort is 30 to 60 %RH.');
 end;
 
@@ -51,8 +46,8 @@ begin
   { Get threshold callbacks with a debounce time of 10 seconds (10000ms) }
   h.SetDebouncePeriod(10000);
 
-  { Register threshold reached callback to procedure ReachedCB }
-  h.OnHumidityReached := {$ifdef FPC}@{$endif}ReachedCB;
+  { Register threshold reached callback to procedure HumidityReachedCB }
+  h.OnHumidityReached := {$ifdef FPC}@{$endif}HumidityReachedCB;
 
   { Configure threshold for "outside of 30 to 60 %RH" (unit is %RH/10) }
   h.SetHumidityCallbackThreshold('o', 30*10, 60*10);
