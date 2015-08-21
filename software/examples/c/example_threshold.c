@@ -12,7 +12,7 @@ void cb_humidity_reached(uint16_t humidity, void *user_data) {
 	(void)user_data; // avoid unused parameter warning
 
 	printf("Humidity: %f %%RH\n", humidity/10.0);
-	puts("Recommended humiditiy for human comfort is 30 to 60 %RH.");
+	printf("Recommended humiditiy for human comfort is 30 to 60 %%RH.\n");
 }
 
 int main(void) {
