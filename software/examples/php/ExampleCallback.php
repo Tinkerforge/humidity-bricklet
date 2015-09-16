@@ -8,12 +8,12 @@ use Tinkerforge\BrickletHumidity;
 
 const HOST = 'localhost';
 const PORT = 4223;
-const UID = '7bA'; // Change to your UID
+const UID = 'XYZ'; // Change to your UID
 
 // Callback function for humidity callback (parameter has unit %RH/10)
-function cb_humidity($rh)
+function cb_humidity($humidity)
 {
-    echo "Relative Humidity: " . $rh / 10.0 . " %RH\n";
+    echo "Humidity: " . $humidity/10.0 . " %RH\n";
 }
 
 $ipcon = new IPConnection(); // Create IP connection
@@ -22,13 +22,13 @@ $h = new BrickletHumidity(UID, $ipcon); // Create device object
 $ipcon->connect(HOST, PORT); // Connect to brickd
 // Don't use device before ipcon is connected
 
-// Set Period for rh callback to 1s (1000ms)
-// Note: The callback is only called every second if the 
-//       humidity has changed since the last call!
-$h->setHumidityCallbackPeriod(1000);
-
-// Register illuminance callback to function cb_illuminance
+// Register humidity callback to function cb_humidity
 $h->registerCallback(BrickletHumidity::CALLBACK_HUMIDITY, 'cb_humidity');
+
+// Set period for humidity callback to 1s (1000ms)
+// Note: The humidity callback is only called every second
+//       if the humidity has changed since the last call!
+$h->setHumidityCallbackPeriod(1000);
 
 echo "Press ctrl+c to exit\n";
 $ipcon->dispatchCallbacks(-1); // Dispatch callbacks forever

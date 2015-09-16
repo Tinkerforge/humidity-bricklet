@@ -34,21 +34,20 @@
                 var h = new Tinkerforge.BrickletHumidity(UID, ipcon); // Create device object
                 ipcon.connect(HOST, PORT,
                     function(error) {
-                        textArea.value += 'Error: '+error+ '\n';
+                        textArea.value += 'Error: ' + error + '\n';
                     }
                 ); // Connect to brickd
                 // Don't use device before ipcon is connected
 
                 ipcon.on(Tinkerforge.IPConnection.CALLBACK_CONNECTED,
-                    function(connectReason) {
+                    function (connectReason) {
                         // Get current humidity (unit is %RH/10)
                         h.getHumidity(
-                            function(humidity) {
-                                textArea.value += 'Relative Humidity: '+humidity/10+' %RH\n';
+                            function (humidity) {
+                                textArea.value += 'Humidity: ' + humidity/10.0 + ' %RH\n';
                             },
-                            function(error) {
-                                console.log(error);
-                                textArea.value += 'Error: '+error+'\n';
+                            function (error) {
+                                textArea.value += 'Error: ' + error + '\n';
                             }
                         );
                     }

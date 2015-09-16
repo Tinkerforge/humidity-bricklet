@@ -1,3 +1,4 @@
+using System;
 using Tinkerforge;
 
 class Example
@@ -9,7 +10,7 @@ class Example
 	// Callback function for humidity callback (parameter has unit %RH/10)
 	static void HumidityCB(BrickletHumidity sender, int humidity)
 	{
-		System.Console.WriteLine("Humidity: " + humidity/10.0 + " %RH");
+		Console.WriteLine("Humidity: " + humidity/10.0 + " %RH");
 	}
 
 	static void Main()
@@ -20,16 +21,16 @@ class Example
 		ipcon.Connect(HOST, PORT); // Connect to brickd
 		// Don't use device before ipcon is connected
 
+		// Register humidity callback to function HumidityCB
+		h.Humidity += HumidityCB;
+
 		// Set period for humidity callback to 1s (1000ms)
 		// Note: The humidity callback is only called every second
 		//       if the humidity has changed since the last call!
 		h.SetHumidityCallbackPeriod(1000);
 
-		// Register humidity callback to function HumidityCB
-		h.Humidity += HumidityCB;
-
-		System.Console.WriteLine("Press enter to exit");
-		System.Console.ReadLine();
+		Console.WriteLine("Press enter to exit");
+		Console.ReadLine();
 		ipcon.Disconnect();
 	}
 }

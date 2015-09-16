@@ -3,37 +3,32 @@ LoadNETAssembly["Tinkerforge",NotebookDirectory[]<>"../../.."]
 
 host="localhost"
 port=4223
-uid="dg7"(* Change to your UID *)
+uid="XYZ"(*Change to your UID*)
 
-(* Create IPConnection and device object *)
+(*Create IPConnection and device object*)
 ipcon=NETNew["Tinkerforge.IPConnection"]
 h=NETNew["Tinkerforge.BrickletHumidity",uid,ipcon]
 ipcon@Connect[host,port]
 
-(* Get threshold callbacks with a debounce time of 10 seconds (10000ms) *)
+(*Get threshold callbacks with a debounce time of 10 seconds (10000ms)*)
 h@SetDebouncePeriod[10000]
 
-(* Callback for humidity outside of 30 to 60 %RH *)
+(*Callback function for humidity reached callback (parameter has unit %RH/10)*)
 HumidityReachedCB[sender_,humidity_]:=
  Module[{},
-  If[humidity<30*10,
-   Print["Humidity too low: "<>ToString[N[Quantity[humidity,"%/10"]]]]
-  ];
-  If[humidity>60*10,
-   Print["Humidity too high: "<>ToString[N[Quantity[humidity,"%/10"]]]]
-  ];
+  Print["Humidity: "<>ToString[N[Quantity[humidity,"%RH/10"]]]];
   Print["Recommended humiditiy for human comfort is 30 to 60 %RH."]
  ]
 
 AddEventHandler[h@HumidityReached,HumidityReachedCB]
 
-(* Configure threshold for "greater than 200 Lux" (unit is Lux/10) *)
+(*Configure threshold for humidity "outside of 30 to 60 %RH" (unit is %RH/10)*)
 option=Tinkerforge`BrickletHumidity`THRESHOLDUOPTIONUOUTSIDE
 h@SetHumidityCallbackThreshold[option,30*10,60*10]
 
 Input["Click OK to exit"]
 
-(* Clean up *)
+(*Clean up*)
 ipcon@Disconnect[]
 ReleaseNETObject[h]
 ReleaseNETObject[ipcon]

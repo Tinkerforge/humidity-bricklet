@@ -1,13 +1,16 @@
 #!/bin/sh
-# connects to localhost:4223 by default, use --host and --port to change it
+# Connects to localhost:4223 by default, use --host and --port to change this
 
-# change to your UID
-uid=7bA
+uid=XYZ # Change to your UID
 
-# set period for humidity callback to 1s (1000ms)
-# note: the humidity callback is only called every second if the
-#       humidity has changed since the last call!
+# Handle incoming humidity callbacks (parameter has unit %RH/10)
+tinkerforge dispatch humidity-bricklet $uid humidity &
+
+# Set period for humidity callback to 1s (1000ms)
+# Note: The humidity callback is only called every second
+#       if the humidity has changed since the last call!
 tinkerforge call humidity-bricklet $uid set-humidity-callback-period 1000
 
-# handle incoming humidity callbacks (unit is %RH/10)
-tinkerforge dispatch humidity-bricklet $uid humidity
+echo "Press key to exit"; read dummy
+
+kill -- -$$ # Stop callback dispatch in background

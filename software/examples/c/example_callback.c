@@ -30,16 +30,16 @@ int main(void) {
 	}
 	// Don't use device before ipcon is connected
 
-	// Set period for humidity callback to 1s (1000ms)
-	// Note: The humidity callback is only called every second
-	//       if the humidity has changed since the last call!
-	humidity_set_humidity_callback_period(&h, 1000);
-
 	// Register humidity callback to function cb_humidity
 	humidity_register_callback(&h,
 	                           HUMIDITY_CALLBACK_HUMIDITY,
 	                           (void *)cb_humidity,
 	                           NULL);
+
+	// Set period for humidity callback to 1s (1000ms)
+	// Note: The humidity callback is only called every second
+	//       if the humidity has changed since the last call!
+	humidity_set_humidity_callback_period(&h, 1000);
 
 	printf("Press key to exit\n");
 	getchar();

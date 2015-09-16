@@ -1,3 +1,4 @@
+using System;
 using Tinkerforge;
 
 class Example
@@ -6,11 +7,11 @@ class Example
 	private static int PORT = 4223;
 	private static string UID = "XYZ"; // Change to your UID
 
-	// Callback function for humidity outside of 30 to 60 %RH (parameter has unit %RH/10)
+	// Callback function for humidity reached callback (parameter has unit %RH/10)
 	static void HumidityReachedCB(BrickletHumidity sender, int humidity)
 	{
-		System.Console.WriteLine("Humidity: " + humidity/10.0 + " %RH");
-		System.Console.WriteLine("Recommended humiditiy for human comfort is 30 to 60 %RH.");
+		Console.WriteLine("Humidity: " + humidity/10.0 + " %RH");
+		Console.WriteLine("Recommended humiditiy for human comfort is 30 to 60 %RH.");
 	}
 
 	static void Main()
@@ -24,14 +25,14 @@ class Example
 		// Get threshold callbacks with a debounce time of 10 seconds (10000ms)
 		h.SetDebouncePeriod(10000);
 
-		// Register threshold reached callback to function HumidityReachedCB
+		// Register humidity reached callback to function HumidityReachedCB
 		h.HumidityReached += HumidityReachedCB;
 
-		// Configure threshold for "outside of 30 to 60 %RH" (unit is %RH/10)
+		// Configure threshold for humidity "outside of 30 to 60 %RH" (unit is %RH/10)
 		h.SetHumidityCallbackThreshold('o', 30*10, 60*10);
 
-		System.Console.WriteLine("Press enter to exit");
-		System.Console.ReadLine();
+		Console.WriteLine("Press enter to exit");
+		Console.ReadLine();
 		ipcon.Disconnect();
 	}
 }

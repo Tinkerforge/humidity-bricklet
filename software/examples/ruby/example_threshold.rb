@@ -19,13 +19,13 @@ ipcon.connect HOST, PORT # Connect to brickd
 # Get threshold callbacks with a debounce time of 10 seconds (10000ms)
 h.set_debounce_period 10000
 
-# Register threshold reached callback for humidity outside of 30 to 60 %RH (parameter has unit %RH/10)
+# Register humidity reached callback (parameter has unit %RH/10)
 h.register_callback(BrickletHumidity::CALLBACK_HUMIDITY_REACHED) do |humidity|
   puts "Humidity: #{humidity/10.0} %RH"
   puts 'Recommended humiditiy for human comfort is 30 to 60 %RH.'
 end
 
-# Configure threshold for "outside of 30 to 60 %RH" (unit is %RH/10)
+# Configure threshold for humidity "outside of 30 to 60 %RH" (unit is %RH/10)
 h.set_humidity_callback_threshold 'o', 30*10, 60*10
 
 puts 'Press key to exit'

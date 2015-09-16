@@ -42,13 +42,13 @@ begin
   ipcon.Connect(HOST, PORT);
   { Don't use device before ipcon is connected }
 
+  { Register humidity callback to procedure HumidityCB }
+  h.OnHumidity := {$ifdef FPC}@{$endif}HumidityCB;
+
   { Set period for humidity callback to 1s (1000ms)
     Note: The humidity callback is only called every second
           if the humidity has changed since the last call! }
   h.SetHumidityCallbackPeriod(1000);
-
-  { Register humidity callback to procedure HumidityCB }
-  h.OnHumidity := {$ifdef FPC}@{$endif}HumidityCB;
 
   WriteLn('Press key to exit');
   ReadLn;

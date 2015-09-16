@@ -1,3 +1,4 @@
+using System;
 using Tinkerforge;
 
 class Example
@@ -16,10 +17,10 @@ class Example
 
 		// Get current humidity (unit is %RH/10)
 		int humidity = h.GetHumidity();
-		System.Console.WriteLine("Humidity: " + humidity/10.0 + " %RH");
+		Console.WriteLine("Humidity: " + humidity/10.0 + " %RH");
 
-		System.Console.WriteLine("Press enter to exit");
-		System.Console.ReadLine();
+		Console.WriteLine("Press enter to exit");
+		Console.ReadLine();
 		ipcon.Disconnect();
 	}
 }

@@ -34,24 +34,25 @@
                 var h = new Tinkerforge.BrickletHumidity(UID, ipcon); // Create device object
                 ipcon.connect(HOST, PORT,
                     function(error) {
-                        textArea.value += 'Error: '+error+ '\n';
+                        textArea.value += 'Error: ' + error + '\n';
                     }
                 ); // Connect to brickd
                 // Don't use device before ipcon is connected
 
                 ipcon.on(Tinkerforge.IPConnection.CALLBACK_CONNECTED,
-                    function(connectReason) {
-                        // Set Period for rh callback to 1s (1000ms)
-                        // Note: The callback is only called every second if the
-                        // humidity has changed since the last call!
+                    function (connectReason) {
+                        // Set period for humidity callback to 1s (1000ms)
+                        // Note: The humidity callback is only called every second
+                        //       if the humidity has changed since the last call!
                         h.setHumidityCallbackPeriod(1000);
                     }
                 );
+
                 // Register humidity callback
                 h.on(Tinkerforge.BrickletHumidity.CALLBACK_HUMIDITY,
                     // Callback function for humidity callback (parameter has unit %RH/10)
-                    function(humidity) {
-                        textArea.value += 'Relative Humidity: '+humidity/10+' %RH\n';
+                    function (humidity) {
+                        textArea.value += 'Humidity: ' + humidity/10.0 + ' %RH\n';
                         textArea.scrollTop = textArea.scrollHeight;
                     }
                 );

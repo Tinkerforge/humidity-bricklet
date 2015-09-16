@@ -1,3 +1,4 @@
+Imports System
 Imports Tinkerforge
 
 Module ExampleSimple
@@ -14,10 +15,10 @@ Module ExampleSimple
 
         ' Get current humidity (unit is %RH/10)
         Dim humidity As Integer = h.GetHumidity()
-        System.Console.WriteLine("Humidity: " + (humidity/10.0).ToString() + " %RH")
+        Console.WriteLine("Humidity: " + (humidity/10.0).ToString() + " %RH")
 
-        System.Console.WriteLine("Press key to exit")
-        System.Console.ReadLine()
+        Console.WriteLine("Press key to exit")
+        Console.ReadLine()
         ipcon.Disconnect()
     End Sub
 End Module

@@ -7,7 +7,7 @@
 #define PORT 4223
 #define UID "XYZ" // Change to your UID
 
-// Callback function for humidity outside of 30 to 60 %RH (parameter has unit %RH/10)
+// Callback function for humidity reached callback (parameter has unit %RH/10)
 void cb_humidity_reached(uint16_t humidity, void *user_data) {
 	(void)user_data; // avoid unused parameter warning
 
@@ -34,13 +34,13 @@ int main(void) {
 	// Get threshold callbacks with a debounce time of 10 seconds (10000ms)
 	humidity_set_debounce_period(&h, 10000);
 
-	// Register threshold reached callback to function cb_humidity_reached
+	// Register humidity reached callback to function cb_humidity_reached
 	humidity_register_callback(&h,
 	                           HUMIDITY_CALLBACK_HUMIDITY_REACHED,
 	                           (void *)cb_humidity_reached,
 	                           NULL);
 
-	// Configure threshold for "outside of 30 to 60 %RH" (unit is %RH/10)
+	// Configure threshold for humidity "outside of 30 to 60 %RH" (unit is %RH/10)
 	humidity_set_humidity_callback_threshold(&h, 'o', 30*10, 60*10);
 
 	printf("Press key to exit\n");

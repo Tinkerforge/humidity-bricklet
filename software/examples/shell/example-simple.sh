@@ -1,8 +1,7 @@
 #!/bin/sh
-# connects to localhost:4223 by default, use --host and --port to change it
+# Connects to localhost:4223 by default, use --host and --port to change this
 
-# change to your UID
-uid=7bA
+uid=XYZ # Change to your UID
 
-# get current humidity (unit is %RH/10)
+# Get current humidity (unit is %RH/10)
 tinkerforge call humidity-bricklet $uid get-humidity

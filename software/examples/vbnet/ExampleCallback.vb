@@ -1,3 +1,4 @@
+Imports System
 Imports Tinkerforge
 
 Module ExampleCallback
@@ -5,9 +6,9 @@ Module ExampleCallback
     Const PORT As Integer = 4223
     Const UID As String = "XYZ" ' Change to your UID
 
-    ' Callback function for humidity callback (parameter has unit %RH/10)
+    ' Callback subroutine for humidity callback (parameter has unit %RH/10)
     Sub HumidityCB(ByVal sender As BrickletHumidity, ByVal humidity As Integer)
-        System.Console.WriteLine("Humidity: " + (humidity/10.0).ToString() + " %RH")
+        Console.WriteLine("Humidity: " + (humidity/10.0).ToString() + " %RH")
     End Sub
 
     Sub Main()
@@ -17,16 +18,16 @@ Module ExampleCallback
         ipcon.Connect(HOST, PORT) ' Connect to brickd
         ' Don't use device before ipcon is connected
 
+        ' Register humidity callback to subroutine HumidityCB
+        AddHandler h.Humidity, AddressOf HumidityCB
+
         ' Set period for humidity callback to 1s (1000ms)
         ' Note: The humidity callback is only called every second
         '       if the humidity has changed since the last call!
         h.SetHumidityCallbackPeriod(1000)
 
-        ' Register humidity callback to function HumidityCB
-        AddHandler h.Humidity, AddressOf HumidityCB
-
-        System.Console.WriteLine("Press key to exit")
-        System.Console.ReadLine()
+        Console.WriteLine("Press key to exit")
+        Console.ReadLine()
         ipcon.Disconnect()
     End Sub
 End Module

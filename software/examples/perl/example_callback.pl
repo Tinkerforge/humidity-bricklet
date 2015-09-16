@@ -7,9 +7,6 @@ use constant HOST => 'localhost';
 use constant PORT => 4223;
 use constant UID => 'XYZ'; # Change to your UID
 
-my $ipcon = Tinkerforge::IPConnection->new(); # Create IP connection
-my $h = Tinkerforge::BrickletHumidity->new(&UID, $ipcon); # Create device object
-
 # Callback subroutine for humidity callback (parameter has unit %RH/10)
 sub cb_humidity
 {
@@ -18,17 +15,20 @@ sub cb_humidity
     print "Humidity: " . $humidity/10.0 . " %RH\n";
 }
 
+my $ipcon = Tinkerforge::IPConnection->new(); # Create IP connection
+my $h = Tinkerforge::BrickletHumidity->new(&UID, $ipcon); # Create device object
+
 $ipcon->connect(&HOST, &PORT); # Connect to brickd
 # Don't use device before ipcon is connected
+
+# Register humidity callback to subroutine cb_humidity
+$h->register_callback($h->CALLBACK_HUMIDITY, 'cb_humidity');
 
 # Set period for humidity callback to 1s (1000ms)
 # Note: The humidity callback is only called every second
 #       if the humidity has changed since the last call!
 $h->set_humidity_callback_period(1000);
 
-# Register humidity callback to subroutine cb_humidity
-$h->register_callback($h->CALLBACK_HUMIDITY, 'cb_humidity');
-
-print "Press any key to exit...\n";
+print "Press key to exit\n";
 <STDIN>;
 $ipcon->disconnect();

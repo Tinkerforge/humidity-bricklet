@@ -17,7 +17,7 @@ if __name__ == "__main__":
 
     # Get current humidity (unit is %RH/10)
     humidity = h.get_humidity()
-    print('Humidity: ' + str(humidity/10.0) + ' %RH')
+    print("Humidity: " + str(humidity/10.0) + " %RH")
 
-    raw_input('Press key to exit\n') # Use input() in Python 3
+    raw_input("Press key to exit\n") # Use input() in Python 3
     ipcon.disconnect()

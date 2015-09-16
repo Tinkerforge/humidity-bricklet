@@ -8,19 +8,12 @@ use Tinkerforge\BrickletHumidity;
 
 const HOST = 'localhost';
 const PORT = 4223;
-const UID = '7bA'; // Change to your UID
+const UID = 'XYZ'; // Change to your UID
 
-// Callback for humidity outside of 30 to 60 %RH
-function cb_reached($humidity)
+// Callback function for humidity reached callback (parameter has unit %RH/10)
+function cb_humidityReached($humidity)
 {
-    if ($humidity < 30*10) {
-        echo "Humidity too low: " . $humidity / 10.0 . " %RH\n";
-    }
-
-    if ($humidity > 60*10) {
-        echo "Humidity too high: " . $humidity / 10.0 . " %RH\n";
-    }
-
+    echo "Humidity: " . $humidity/10.0 . " %RH\n";
     echo "Recommended humiditiy for human comfort is 30 to 60 %RH.\n";
 }
 
@@ -33,10 +26,10 @@ $ipcon->connect(HOST, PORT); // Connect to brickd
 // Get threshold callbacks with a debounce time of 10 seconds (10000ms)
 $h->setDebouncePeriod(10000);
 
-// Register threshold reached callback to function cb_reached
-$h->registerCallback(BrickletHumidity::CALLBACK_HUMIDITY_REACHED, 'cb_reached');
+// Register humidity reached callback to function cb_humidityReached
+$h->registerCallback(BrickletHumidity::CALLBACK_HUMIDITY_REACHED, 'cb_humidityReached');
 
-// Configure threshold for "outside of 30 to 60 %RH" (unit is %RH/10)
+// Configure threshold for humidity "outside of 30 to 60 %RH" (unit is %RH/10)
 $h->setHumidityCallbackThreshold('o', 30*10, 60*10);
 
 echo "Press ctrl+c to exit\n";
