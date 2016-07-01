@@ -4,7 +4,7 @@ function matlab_example_callback()
 
     HOST = 'localhost';
     PORT = 4223;
-    UID = 'XYZ'; % Change to your UID
+    UID = 'XYZ'; % Change XYZ to the UID of your Humidity Bricklet
 
     ipcon = IPConnection(); % Create IP connection
     h = handle(BrickletHumidity(UID, ipcon), 'CallbackProperties'); % Create device object

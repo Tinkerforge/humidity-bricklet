@@ -4,7 +4,7 @@ Imports Tinkerforge
 Module ExampleThreshold
     Const HOST As String = "localhost"
     Const PORT As Integer = 4223
-    Const UID As String = "XYZ" ' Change to your UID
+    Const UID As String = "XYZ" ' Change XYZ to the UID of your Humidity Bricklet
 
     ' Callback subroutine for humidity reached callback (parameter has unit %RH/10)
     Sub HumidityReachedCB(ByVal sender As BrickletHumidity, ByVal humidity As Integer)

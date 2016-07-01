@@ -8,7 +8,7 @@ use Tinkerforge\BrickletHumidity;
 
 const HOST = 'localhost';
 const PORT = 4223;
-const UID = 'XYZ'; // Change to your UID
+const UID = 'XYZ'; // Change XYZ to the UID of your Humidity Bricklet
 
 // Callback function for humidity callback (parameter has unit %RH/10)
 function cb_humidity($humidity)
