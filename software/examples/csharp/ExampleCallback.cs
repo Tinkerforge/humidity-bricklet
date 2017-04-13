@@ -22,7 +22,7 @@ class Example
 		// Don't use device before ipcon is connected
 
 		// Register humidity callback to function HumidityCB
-		h.Humidity += HumidityCB;
+		h.HumidityCallback += HumidityCB;
 
 		// Set period for humidity callback to 1s (1000ms)
 		// Note: The humidity callback is only called every second

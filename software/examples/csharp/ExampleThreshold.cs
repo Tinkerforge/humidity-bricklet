@@ -26,7 +26,7 @@ class Example
 		h.SetDebouncePeriod(10000);
 
 		// Register humidity reached callback to function HumidityReachedCB
-		h.HumidityReached += HumidityReachedCB;
+		h.HumidityReachedCallback += HumidityReachedCB;
 
 		// Configure threshold for humidity "outside of 30 to 60 %RH" (unit is %RH/10)
 		h.SetHumidityCallbackThreshold('o', 30*10, 60*10);
