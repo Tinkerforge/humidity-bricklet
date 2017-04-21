@@ -11,7 +11,7 @@ tinkerforge dispatch humidity-bricklet $uid humidity-reached\
  --execute "echo Humidity: {humidity} %RH/10. Recommended humiditiy for human comfort is 30 to 60 %RH." &
 
 # Configure threshold for humidity "outside of 30 to 60 %RH" (unit is %RH/10)
-tinkerforge call humidity-bricklet $uid set-humidity-callback-threshold outside 300 600
+tinkerforge call humidity-bricklet $uid set-humidity-callback-threshold threshold-option-outside 300 600
 
 echo "Press key to exit"; read dummy
 
