@@ -3,7 +3,7 @@
   (general
     (links 50)
     (no_connects 0)
-    (area 139.909499 128.309499 155.290501 153.690501)
+    (area 139.244999 127.644999 155.955001 154.355001)
     (thickness 1.6)
     (drawings 12)
     (tracks 187)
@@ -37,7 +37,7 @@
   )
 
   (setup
-    (last_trace_width 0.25)
+    (last_trace_width 0.2)
     (user_trace_width 0.25)
     (user_trace_width 0.3)
     (user_trace_width 0.4)
@@ -69,7 +69,7 @@
     (aux_axis_origin 0 0)
     (visible_elements FFFF7F5F)
     (pcbplotparams
-      (layerselection 0x00030_80000001)
+      (layerselection 0x00010_00000000)
       (usegerberextensions false)
       (excludeedgelayer true)
       (linewidth 0.050000)
@@ -83,16 +83,16 @@
       (hpglpenoverlay 2)
       (psnegative false)
       (psa4output false)
-      (plotreference true)
-      (plotvalue true)
+      (plotreference false)
+      (plotvalue false)
       (plotinvisibletext false)
       (padsonsilk false)
       (subtractmaskfromsilk false)
       (outputformat 1)
       (mirror false)
-      (drillshape 1)
+      (drillshape 0)
       (scaleselection 1)
-      (outputdirectory ""))
+      (outputdirectory /tmp/))
   )
 
   (net 0 "")
