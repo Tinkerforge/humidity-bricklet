@@ -527,9 +527,9 @@ Connection ~ 7150 2850
 Wire Wire Line
 	7350 3250 7350 3650
 Connection ~ 7350 3650
-Text GLabel 4650 3150 0    60   Output ~ 0
-SDA
 Text GLabel 4650 2950 0    60   Output ~ 0
+SDA
+Text GLabel 4650 3150 0    60   Output ~ 0
 SCL
 Text GLabel 4650 3350 0    60   Output ~ 0
 nRESET
