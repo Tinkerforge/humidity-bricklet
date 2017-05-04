@@ -8,13 +8,13 @@
     (drawings 12)
     (tracks 171)
     (zones 0)
-    (modules 21)
+    (modules 23)
     (nets 17)
   )
 
   (page A4)
   (layers
-    (0 F.Cu signal hide)
+    (0 F.Cu signal)
     (31 B.Cu signal hide)
     (32 B.Adhes user)
     (33 F.Adhes user)
@@ -37,7 +37,7 @@
   )
 
   (setup
-    (last_trace_width 0.25)
+    (last_trace_width 0.2)
     (user_trace_width 0.25)
     (user_trace_width 0.3)
     (user_trace_width 0.4)
@@ -6509,6 +6509,34 @@
       (xy 2.1463 -1.17348) (xy 2.18186 -1.17348) (xy 2.21742 -1.17094) (xy 2.2479 -1.17094)
       (xy 2.27584 -1.1684) (xy 2.2987 -1.16586) (xy 2.30378 -1.16332) (xy 2.3114 -1.16332)
       (xy 2.3114 -1.41732) (xy 2.3114 -1.67132) (xy 2.3114 -1.67132)) (layer B.SilkS) (width 0.00254))
+  )
+
+  (module kicad-libraries:Fiducial_Mark (layer F.Cu) (tedit 560531B0) (tstamp 590C7A9A)
+    (at 147.6 152)
+    (attr smd)
+    (fp_text reference Fiducial_Mark (at 0 0) (layer F.SilkS) hide
+      (effects (font (size 0.127 0.127) (thickness 0.03302)))
+    )
+    (fp_text value VAL** (at 0 -0.29972) (layer F.SilkS) hide
+      (effects (font (size 0.127 0.127) (thickness 0.03302)))
+    )
+    (fp_circle (center 0 0) (end 1.15062 0) (layer Dwgs.User) (width 0.01016))
+    (pad 1 smd circle (at 0 0) (size 1.00076 1.00076) (layers F.Cu F.Paste F.Mask)
+      (clearance 0.65024))
+  )
+
+  (module kicad-libraries:Fiducial_Mark (layer F.Cu) (tedit 560531B0) (tstamp 590C7AA5)
+    (at 153.6 137.5)
+    (attr smd)
+    (fp_text reference Fiducial_Mark (at 0 0) (layer F.SilkS) hide
+      (effects (font (size 0.127 0.127) (thickness 0.03302)))
+    )
+    (fp_text value VAL** (at 0 -0.29972) (layer F.SilkS) hide
+      (effects (font (size 0.127 0.127) (thickness 0.03302)))
+    )
+    (fp_circle (center 0 0) (end 1.15062 0) (layer Dwgs.User) (width 0.01016))
+    (pad 1 smd circle (at 0 0) (size 1.00076 1.00076) (layers F.Cu F.Paste F.Mask)
+      (clearance 0.65024))
   )
 
   (gr_text 2.0 (at 150.1 134.9 90) (layer F.SilkS)

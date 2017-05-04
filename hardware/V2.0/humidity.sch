@@ -408,10 +408,6 @@ F 3 "" H 1800 850 50  0000 C CNN
 $EndComp
 Wire Wire Line
 	1800 1500 1800 850 
-Text GLabel 4650 5050 0    60   Output ~ 0
-RELAY1
-Wire Wire Line
-	4650 5050 4750 5050
 NoConn ~ 4750 2850
 NoConn ~ 4750 2750
 Wire Wire Line
@@ -587,13 +583,12 @@ F 3 "" H 7450 3750 60  0001 C CNN
 $EndComp
 Wire Wire Line
 	7450 3750 7500 3750
-Text GLabel 4650 3050 0    60   Input ~ 0
-ALERT
-Wire Wire Line
-	4650 3050 4750 3050
 NoConn ~ 4750 4250
 NoConn ~ 4750 4150
 NoConn ~ 7500 3950
 Wire Wire Line
 	4650 3350 4750 3350
+NoConn ~ 4750 3050
+NoConn ~ 4750 5050
+NoConn ~ 7250 3250
 $EndSCHEMATC
