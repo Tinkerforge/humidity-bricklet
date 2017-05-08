@@ -5,7 +5,7 @@
     (no_connects 0)
     (area 139.244999 127.644999 155.955001 154.355001)
     (thickness 1.6)
-    (drawings 12)
+    (drawings 13)
     (tracks 186)
     (zones 0)
     (modules 24)
@@ -13,6 +13,15 @@
   )
 
   (page A4)
+  (title_block
+    (title "Humidity bricklet")
+    (date 2017-05-08)
+    (rev 2.0)
+    (company "Tinkerforge GmbH")
+    (comment 1 "Licensed under CERN OHL v.1.1")
+    (comment 2 "Copyright (©) 2017, B.Nordmeyer <bastian@tinkerforge.com>")
+  )
+
   (layers
     (0 F.Cu signal)
     (31 B.Cu signal)
@@ -6555,6 +6564,9 @@
       (net 17 "Net-(P103-Pad1)"))
   )
 
+  (gr_text "Copyright Tinkerforge GmbH 2017.\nThis documentation describes Open Hardware and is licensed under the\nCERN OHL v. 1.1.\nYou may redistribute and modify this documentation under the terms of the\nCERN OHL v.1.1. (http://ohwr.org/cernohl). This documentation is distributed\nWITHOUT ANY EXPRESS OR IMPLIED WARRANTY, INCLUDING OF\nMERCHANTABILITY, SATISFACTORY QUALITY AND FITNESS FOR A\nPARTICULAR PURPOSE. Please see the CERN OHL v.1.1 for applicable\nconditions" (at 257.15 155.8) (layer Cmts.User)
+    (effects (font (size 0.8 0.8) (thickness 0.2)))
+  )
   (gr_text 2.0 (at 150.1 134.9 90) (layer F.SilkS)
     (effects (font (size 0.7 0.7) (thickness 0.15)))
   )
