@@ -20,7 +20,7 @@ HumidityReachedCB[sender_,humidity_]:=
   Print["Recommended humiditiy for human comfort is 30 to 60 %RH."]
  ]
 
-AddEventHandler[h@HumidityReached,HumidityReachedCB]
+AddEventHandler[h@HumidityReachedCallback,HumidityReachedCB]
 
 (*Configure threshold for humidity "outside of 30 to 60 %RH" (unit is %RH/10)*)
 option=Tinkerforge`BrickletHumidity`THRESHOLDUOPTIONUOUTSIDE

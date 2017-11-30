@@ -23,7 +23,7 @@ Module ExampleThreshold
         h.SetDebouncePeriod(10000)
 
         ' Register humidity reached callback to subroutine HumidityReachedCB
-        AddHandler h.HumidityReached, AddressOf HumidityReachedCB
+        AddHandler h.HumidityReachedCallback, AddressOf HumidityReachedCB
 
         ' Configure threshold for humidity "outside of 30 to 60 %RH" (unit is %RH/10)
         h.SetHumidityCallbackThreshold("o"C, 30*10, 60*10)

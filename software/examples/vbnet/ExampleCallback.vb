@@ -19,7 +19,7 @@ Module ExampleCallback
         ' Don't use device before ipcon is connected
 
         ' Register humidity callback to subroutine HumidityCB
-        AddHandler h.Humidity, AddressOf HumidityCB
+        AddHandler h.HumidityCallback, AddressOf HumidityCB
 
         ' Set period for humidity callback to 1s (1000ms)
         ' Note: The humidity callback is only called every second
