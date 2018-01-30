@@ -17,7 +17,7 @@ public class ExampleSimple {
 		ipcon.connect(HOST, PORT); // Connect to brickd
 		// Don't use device before ipcon is connected
 
-		// Get current humidity (unit is %RH/10)
+		// Get current humidity
 		int humidity = h.getHumidity(); // Can throw com.tinkerforge.TimeoutException
 		System.out.println("Humidity: " + humidity/10.0 + " %RH");
 

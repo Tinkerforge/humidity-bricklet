@@ -7,7 +7,7 @@
 #define PORT 4223
 #define UID "XYZ" // Change XYZ to the UID of your Humidity Bricklet
 
-// Callback function for humidity reached callback (parameter has unit %RH/10)
+// Callback function for humidity reached callback
 void cb_humidity_reached(uint16_t humidity, void *user_data) {
 	(void)user_data; // avoid unused parameter warning
 
@@ -40,7 +40,7 @@ int main(void) {
 	                           (void *)cb_humidity_reached,
 	                           NULL);
 
-	// Configure threshold for humidity "outside of 30 to 60 %RH" (unit is %RH/10)
+	// Configure threshold for humidity "outside of 30 to 60 %RH"
 	humidity_set_humidity_callback_threshold(&h, 'o', 30*10, 60*10);
 
 	printf("Press key to exit\n");

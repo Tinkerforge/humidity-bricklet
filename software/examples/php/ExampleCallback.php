@@ -10,7 +10,7 @@ const HOST = 'localhost';
 const PORT = 4223;
 const UID = 'XYZ'; // Change XYZ to the UID of your Humidity Bricklet
 
-// Callback function for humidity callback (parameter has unit %RH/10)
+// Callback function for humidity callback
 function cb_humidity($humidity)
 {
     echo "Humidity: " . $humidity/10.0 . " %RH\n";

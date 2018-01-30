@@ -3,7 +3,7 @@
 
 uid=XYZ # Change XYZ to the UID of your Humidity Bricklet
 
-# Handle incoming humidity callbacks (parameter has unit %RH/10)
+# Handle incoming humidity callbacks
 tinkerforge dispatch humidity-bricklet $uid humidity &
 
 # Set period for humidity callback to 1s (1000ms)

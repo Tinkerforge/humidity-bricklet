@@ -16,7 +16,7 @@ h = BrickletHumidity.new UID, ipcon # Create device object
 ipcon.connect HOST, PORT # Connect to brickd
 # Don't use device before ipcon is connected
 
-# Register humidity callback (parameter has unit %RH/10)
+# Register humidity callback
 h.register_callback(BrickletHumidity::CALLBACK_HUMIDITY) do |humidity|
   puts "Humidity: #{humidity/10.0} %RH"
 end

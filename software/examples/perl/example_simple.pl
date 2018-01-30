@@ -13,7 +13,7 @@ my $h = Tinkerforge::BrickletHumidity->new(&UID, $ipcon); # Create device object
 $ipcon->connect(&HOST, &PORT); # Connect to brickd
 # Don't use device before ipcon is connected
 
-# Get current humidity (unit is %RH/10)
+# Get current humidity
 my $humidity = $h->get_humidity();
 print "Humidity: " . $humidity/10.0 . " %RH\n";
 

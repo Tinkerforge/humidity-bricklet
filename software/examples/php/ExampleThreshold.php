@@ -10,7 +10,7 @@ const HOST = 'localhost';
 const PORT = 4223;
 const UID = 'XYZ'; // Change XYZ to the UID of your Humidity Bricklet
 
-// Callback function for humidity reached callback (parameter has unit %RH/10)
+// Callback function for humidity reached callback
 function cb_humidityReached($humidity)
 {
     echo "Humidity: " . $humidity/10.0 . " %RH\n";
@@ -29,7 +29,7 @@ $h->setDebouncePeriod(10000);
 // Register humidity reached callback to function cb_humidityReached
 $h->registerCallback(BrickletHumidity::CALLBACK_HUMIDITY_REACHED, 'cb_humidityReached');
 
-// Configure threshold for humidity "outside of 30 to 60 %RH" (unit is %RH/10)
+// Configure threshold for humidity "outside of 30 to 60 %RH"
 $h->setHumidityCallbackThreshold('o', 30*10, 60*10);
 
 echo "Press ctrl+c to exit\n";

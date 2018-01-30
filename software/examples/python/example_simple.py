@@ -15,7 +15,7 @@ if __name__ == "__main__":
     ipcon.connect(HOST, PORT) # Connect to brickd
     # Don't use device before ipcon is connected
 
-    # Get current humidity (unit is %RH/10)
+    # Get current humidity
     humidity = h.get_humidity()
     print("Humidity: " + str(humidity/10.0) + " %RH")
 

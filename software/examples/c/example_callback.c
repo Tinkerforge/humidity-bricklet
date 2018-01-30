@@ -7,7 +7,7 @@
 #define PORT 4223
 #define UID "XYZ" // Change XYZ to the UID of your Humidity Bricklet
 
-// Callback function for humidity callback (parameter has unit %RH/10)
+// Callback function for humidity callback
 void cb_humidity(uint16_t humidity, void *user_data) {
 	(void)user_data; // avoid unused parameter warning
 

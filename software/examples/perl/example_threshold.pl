@@ -7,7 +7,7 @@ use constant HOST => 'localhost';
 use constant PORT => 4223;
 use constant UID => 'XYZ'; # Change XYZ to the UID of your Humidity Bricklet
 
-# Callback subroutine for humidity reached callback (parameter has unit %RH/10)
+# Callback subroutine for humidity reached callback
 sub cb_humidity_reached
 {
     my ($humidity) = @_;
@@ -28,7 +28,7 @@ $h->set_debounce_period(10000);
 # Register humidity reached callback to subroutine cb_humidity_reached
 $h->register_callback($h->CALLBACK_HUMIDITY_REACHED, 'cb_humidity_reached');
 
-# Configure threshold for humidity "outside of 30 to 60 %RH" (unit is %RH/10)
+# Configure threshold for humidity "outside of 30 to 60 %RH"
 $h->set_humidity_callback_threshold('o', 30*10, 60*10);
 
 print "Press key to exit\n";

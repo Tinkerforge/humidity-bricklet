@@ -17,7 +17,7 @@ public class ExampleCallback {
 		ipcon.connect(HOST, PORT); // Connect to brickd
 		// Don't use device before ipcon is connected
 
-		// Add humidity listener (parameter has unit %RH/10)
+		// Add humidity listener
 		h.addHumidityListener(new BrickletHumidity.HumidityListener() {
 			public void humidity(int humidity) {
 				System.out.println("Humidity: " + humidity/10.0 + " %RH");

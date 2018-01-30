@@ -18,7 +18,7 @@ Notebook[{
    RowBox[{"ipcon", "@", RowBox[{"Connect", "[", RowBox[{"host", ",", "port"}], "]"}]}],
    RowBox[{"
 "}],
-   RowBox[{"(*", "Callback function for humidity callback (parameter has unit %RH/10)", "*)"}],
+   RowBox[{"(*", "Callback function for humidity callback", "*)"}],
    RowBox[{RowBox[{"HumidityCB", "[", RowBox[{"sender_", ",", "humidity_"}], "]"}], ":=", "\[IndentingNewLine]", RowBox[{"Print", "[", RowBox[{"\"\<Humidity: \>\"", "<>", RowBox[{"ToString", "[", RowBox[{"N", "[", RowBox[{"Quantity", "[", RowBox[{"humidity", ",", "\"\<%RH/10\>\""}], "]"}], "]"}], "]"}]}], "]"}]}],
    RowBox[{"AddEventHandler", "[", RowBox[{RowBox[{"h", "@", "HumidityCallback"}], ",", "HumidityCB"}], "]"}],
    RowBox[{"

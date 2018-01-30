@@ -18,14 +18,14 @@ function matlab_example_threshold()
     % Register humidity reached callback to function cb_humidity_reached
     set(h, 'HumidityReachedCallback', @(h, e) cb_humidity_reached(e));
 
-    % Configure threshold for humidity "outside of 30 to 60 %RH" (unit is %RH/10)
+    % Configure threshold for humidity "outside of 30 to 60 %RH"
     h.setHumidityCallbackThreshold('o', 30*10, 60*10);
 
     input('Press key to exit\n', 's');
     ipcon.disconnect();
 end
 
-% Callback function for humidity reached callback (parameter has unit %RH/10)
+% Callback function for humidity reached callback
 function cb_humidity_reached(e)
     fprintf('Humidity: %g %%RH\n', e.humidity/10.0);
     fprintf('Recommended humiditiy for human comfort is 30 to 60 %%RH.\n');

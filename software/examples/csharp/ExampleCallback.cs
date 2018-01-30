@@ -7,7 +7,7 @@ class Example
 	private static int PORT = 4223;
 	private static string UID = "XYZ"; // Change XYZ to the UID of your Humidity Bricklet
 
-	// Callback function for humidity callback (parameter has unit %RH/10)
+	// Callback function for humidity callback
 	static void HumidityCB(BrickletHumidity sender, int humidity)
 	{
 		Console.WriteLine("Humidity: " + humidity/10.0 + " %RH");

@@ -22,14 +22,14 @@ Notebook[{
    RowBox[{"h", "@", RowBox[{"SetDebouncePeriod", "[", "10000", "]"}]}],
    RowBox[{"
 "}],
-   RowBox[{"(*", "Callback function for humidity reached callback (parameter has unit %RH/10)", "*)"}],
+   RowBox[{"(*", "Callback function for humidity reached callback", "*)"}],
    RowBox[{RowBox[{"HumidityReachedCB", "[", RowBox[{"sender_", ",", "humidity_"}], "]"}], ":=", "\[IndentingNewLine]", RowBox[{"Module", "[", RowBox[{RowBox[{"{", "}"}], ",", RowBox[{"\[IndentingNewLine]", RowBox[{"Print", "[", RowBox[{"\"\<Humidity: \>\"", "<>", RowBox[{"ToString", "[", RowBox[{"N", "[", RowBox[{"Quantity", "[", RowBox[{"humidity", ",", "\"\<%RH/10\>\""}], "]"}], "]"}], "]"}]}], "]"}], ";", "\[IndentingNewLine]", RowBox[{"Print", "[", "\"\<Recommended humiditiy for human comfort is 30 to 60 %RH.\>\"", "]"}], "\[IndentingNewLine]"}]}], "]"}]}],
    RowBox[{"
 "}],
    RowBox[{"AddEventHandler", "[", RowBox[{RowBox[{"h", "@", "HumidityReachedCallback"}], ",", "HumidityReachedCB"}], "]"}],
    RowBox[{"
 "}],
-   RowBox[{"(*", "Configure threshold for humidity ", "\"\<outside of 30 to 60 %RH\>\"", " (unit is %RH/10)", "*)"}],
+   RowBox[{"(*", "Configure threshold for humidity ", "\"\<outside of 30 to 60 %RH\>\"", "", "*)"}],
    RowBox[{"option", "=", "Tinkerforge`BrickletHumidity`THRESHOLDUOPTIONUOUTSIDE"}],
    RowBox[{"h", "@", RowBox[{"SetHumidityCallbackThreshold", "[", RowBox[{"option", ",", RowBox[{"30", "*", "10"}], ",", RowBox[{"60", "*", "10"}]}], "]"}]}],
    RowBox[{"

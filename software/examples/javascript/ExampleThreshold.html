@@ -44,14 +44,14 @@
                         // Get threshold callbacks with a debounce time of 10 seconds (10000ms)
                         h.setDebouncePeriod(10000);
 
-                        // Configure threshold for humidity "outside of 30 to 60 %RH" (unit is %RH/10)
+                        // Configure threshold for humidity "outside of 30 to 60 %RH"
                         h.setHumidityCallbackThreshold('o', 30*10, 60*10);
                     }
                 );
 
                 // Register humidity reached callback
                 h.on(Tinkerforge.BrickletHumidity.CALLBACK_HUMIDITY_REACHED,
-                    // Callback function for humidity reached callback (parameter has unit %RH/10)
+                    // Callback function for humidity reached callback
                     function (humidity) {
                         textArea.value += 'Humidity: ' + humidity/10.0 + ' %RH\n';
                         textArea.value += 'Recommended humiditiy for human comfort is 30 to 60 %RH.\n';

@@ -24,7 +24,7 @@ const
 var
   e: TExample;
 
-{ Callback procedure for humidity callback (parameter has unit %RH/10) }
+{ Callback procedure for humidity callback }
 procedure TExample.HumidityCB(sender: TBrickletHumidity; const humidity: word);
 begin
   WriteLn(Format('Humidity: %f %%RH', [humidity/10.0]));

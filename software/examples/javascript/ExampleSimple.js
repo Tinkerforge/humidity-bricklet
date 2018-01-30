@@ -16,7 +16,7 @@ ipcon.connect(HOST, PORT,
 
 ipcon.on(Tinkerforge.IPConnection.CALLBACK_CONNECTED,
     function (connectReason) {
-        // Get current humidity (unit is %RH/10)
+        // Get current humidity
         h.getHumidity(
             function (humidity) {
                 console.log('Humidity: ' + humidity/10.0 + ' %RH');

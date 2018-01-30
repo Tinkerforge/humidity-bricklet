@@ -6,7 +6,7 @@ Module ExampleThreshold
     Const PORT As Integer = 4223
     Const UID As String = "XYZ" ' Change XYZ to the UID of your Humidity Bricklet
 
-    ' Callback subroutine for humidity reached callback (parameter has unit %RH/10)
+    ' Callback subroutine for humidity reached callback
     Sub HumidityReachedCB(ByVal sender As BrickletHumidity, ByVal humidity As Integer)
         Console.WriteLine("Humidity: " + (humidity/10.0).ToString() + " %RH")
         Console.WriteLine("Recommended humiditiy for human comfort is 30 to 60 %RH.")
@@ -25,7 +25,7 @@ Module ExampleThreshold
         ' Register humidity reached callback to subroutine HumidityReachedCB
         AddHandler h.HumidityReachedCallback, AddressOf HumidityReachedCB
 
-        ' Configure threshold for humidity "outside of 30 to 60 %RH" (unit is %RH/10)
+        ' Configure threshold for humidity "outside of 30 to 60 %RH"
         h.SetHumidityCallbackThreshold("o"C, 30*10, 60*10)
 
         Console.WriteLine("Press key to exit")

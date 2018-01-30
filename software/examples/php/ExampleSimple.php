@@ -16,7 +16,7 @@ $h = new BrickletHumidity(UID, $ipcon); // Create device object
 $ipcon->connect(HOST, PORT); // Connect to brickd
 // Don't use device before ipcon is connected
 
-// Get current humidity (unit is %RH/10)
+// Get current humidity
 $humidity = $h->getHumidity();
 echo "Humidity: " . $humidity/10.0 . " %RH\n";
 

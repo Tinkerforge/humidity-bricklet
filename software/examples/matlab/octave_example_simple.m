@@ -11,7 +11,7 @@ function octave_example_simple()
     ipcon.connect(HOST, PORT); % Connect to brickd
     % Don't use device before ipcon is connected
 
-    % Get current humidity (unit is %RH/10)
+    % Get current humidity
     humidity = h.getHumidity();
     fprintf("Humidity: %g %%RH\n", humidity/10.0);
 

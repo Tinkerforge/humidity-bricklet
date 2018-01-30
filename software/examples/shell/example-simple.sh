@@ -3,5 +3,5 @@
 
 uid=XYZ # Change XYZ to the UID of your Humidity Bricklet
 
-# Get current humidity (unit is %RH/10)
+# Get current humidity
 tinkerforge call humidity-bricklet $uid get-humidity

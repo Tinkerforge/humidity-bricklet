@@ -8,7 +8,7 @@ UID = "XYZ" # Change XYZ to the UID of your Humidity Bricklet
 from tinkerforge.ip_connection import IPConnection
 from tinkerforge.bricklet_humidity import BrickletHumidity
 
-# Callback function for humidity reached callback (parameter has unit %RH/10)
+# Callback function for humidity reached callback
 def cb_humidity_reached(humidity):
     print("Humidity: " + str(humidity/10.0) + " %RH")
     print("Recommended humiditiy for human comfort is 30 to 60 %RH.")
@@ -26,7 +26,7 @@ if __name__ == "__main__":
     # Register humidity reached callback to function cb_humidity_reached
     h.register_callback(h.CALLBACK_HUMIDITY_REACHED, cb_humidity_reached)
 
-    # Configure threshold for humidity "outside of 30 to 60 %RH" (unit is %RH/10)
+    # Configure threshold for humidity "outside of 30 to 60 %RH"
     h.set_humidity_callback_threshold("o", 30*10, 60*10)
 
     raw_input("Press key to exit\n") # Use input() in Python 3
