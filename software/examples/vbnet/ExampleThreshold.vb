@@ -9,7 +9,7 @@ Module ExampleThreshold
     ' Callback subroutine for humidity reached callback
     Sub HumidityReachedCB(ByVal sender As BrickletHumidity, ByVal humidity As Integer)
         Console.WriteLine("Humidity: " + (humidity/10.0).ToString() + " %RH")
-        Console.WriteLine("Recommended humiditiy for human comfort is 30 to 60 %RH.")
+        Console.WriteLine("Recommended humidity for human comfort is 30 to 60 %RH.")
     End Sub
 
     Sub Main()

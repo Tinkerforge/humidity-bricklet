@@ -8,7 +8,7 @@ tinkerforge call humidity-bricklet $uid set-debounce-period 10000
 
 # Handle incoming humidity reached callbacks
 tinkerforge dispatch humidity-bricklet $uid humidity-reached\
- --execute "echo Humidity: {humidity}/10 %RH. Recommended humiditiy for human comfort is 30 to 60 %RH." &
+ --execute "echo Humidity: {humidity}/10 %RH. Recommended humidity for human comfort is 30 to 60 %RH." &
 
 # Configure threshold for humidity "outside of 30 to 60 %RH"
 tinkerforge call humidity-bricklet $uid set-humidity-callback-threshold threshold-option-outside 300 600

@@ -14,7 +14,7 @@ const UID = 'XYZ'; // Change XYZ to the UID of your Humidity Bricklet
 function cb_humidityReached($humidity)
 {
     echo "Humidity: " . $humidity/10.0 . " %RH\n";
-    echo "Recommended humiditiy for human comfort is 30 to 60 %RH.\n";
+    echo "Recommended humidity for human comfort is 30 to 60 %RH.\n";
 }
 
 $ipcon = new IPConnection(); // Create IP connection

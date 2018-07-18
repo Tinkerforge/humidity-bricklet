@@ -14,7 +14,7 @@ sub cb_humidity_reached
     my ($humidity) = @_;
 
     print "Humidity: " . $humidity/10.0 . " %RH\n";
-    print "Recommended humiditiy for human comfort is 30 to 60 %RH.\n";
+    print "Recommended humidity for human comfort is 30 to 60 %RH.\n";
 }
 
 my $ipcon = Tinkerforge::IPConnection->new(); # Create IP connection

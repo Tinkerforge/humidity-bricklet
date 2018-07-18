@@ -22,7 +22,7 @@ h.set_debounce_period 10000
 # Register humidity reached callback
 h.register_callback(BrickletHumidity::CALLBACK_HUMIDITY_REACHED) do |humidity|
   puts "Humidity: #{humidity/10.0} %RH"
-  puts 'Recommended humiditiy for human comfort is 30 to 60 %RH.'
+  puts 'Recommended humidity for human comfort is 30 to 60 %RH.'
 end
 
 # Configure threshold for humidity "outside of 30 to 60 %RH"
