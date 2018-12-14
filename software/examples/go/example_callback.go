@@ -19,7 +19,7 @@ func main() {
 	// Don't use device before ipcon is connected.
 
 	h.RegisterHumidityCallback(func(humidity uint16) {
-		fmt.Printf("Humidity: %d %RH\n", float64(humidity)/10.0)
+		fmt.Printf("Humidity: %f %RH\n", float64(humidity)/10.0)
 	})
 
 	// Set period for humidity receiver to 1s (1000ms).

@@ -22,7 +22,7 @@ func main() {
 	h.SetDebouncePeriod(10000)
 
 	h.RegisterHumidityReachedCallback(func(humidity uint16) {
-		fmt.Printf("Humidity: %d %RH\n", float64(humidity)/10.0)
+		fmt.Printf("Humidity: %f %RH\n", float64(humidity)/10.0)
 		fmt.Println("Recommended humidity for human comfort is 30 to 60 %RH.")
 	})
 
