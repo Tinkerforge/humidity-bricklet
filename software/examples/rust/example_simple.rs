@@ -1,8 +1,6 @@
-use std::{io, error::Error};
+use std::{error::Error, io};
 
-use tinkerforge::{ip_connection::IpConnection, 
-                  humidity_bricklet::*};
-
+use tinkerforge::{humidity_bricklet::*, ip_connection::IpConnection};
 
 const HOST: &str = "localhost";
 const PORT: u16 = 4223;
@@ -13,11 +11,11 @@ fn main() -> Result<(), Box<dyn Error>> {
     let h = HumidityBricklet::new(UID, &ipcon); // Create device object.
 
     ipcon.connect((HOST, PORT)).recv()??; // Connect to brickd.
-    // Don't use device before ipcon is connected.
+                                          // Don't use device before ipcon is connected.
 
-		// Get current humidity.
-let humidity = h.get_humidity().recv()?;
-		println!("Humidity: {} %RH", humidity as f32 /10.0);
+    // Get current humidity.
+    let humidity = h.get_humidity().recv()?;
+    println!("Humidity: {} %RH", humidity as f32 / 10.0);
 
     println!("Press enter to exit.");
     let mut _input = String::new();
