@@ -4,6 +4,7 @@ setup:
 	# Handle incoming humidity callbacks
 	subscribe to tinkerforge/callback/humidity_bricklet/XYZ/humidity
 	publish '{"register": true}' to tinkerforge/register/humidity_bricklet/XYZ/humidity # Register humidity callback
+	
 	# Set period for humidity callback to 1s (1000ms)
 	# Note: The humidity callback is only called every second
 	#       if the humidity has changed since the last call!
