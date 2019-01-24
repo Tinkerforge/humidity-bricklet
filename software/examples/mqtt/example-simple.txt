@@ -1,0 +1,8 @@
+
+
+# Change XYZ to the UID of your Humidity Bricklet
+
+setup:
+	# Get current humidity
+	subscribe to tinkerforge/response/humidity/XYZ/get_humidity
+	publish '' to tinkerforge/request/humidity_bricklet/XYZ/get_humidity 
