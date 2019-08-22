@@ -33,7 +33,7 @@ int main(void) {
 	// Register humidity callback to function cb_humidity
 	humidity_register_callback(&h,
 	                           HUMIDITY_CALLBACK_HUMIDITY,
-	                           (void *)cb_humidity,
+	                           (void (*)(void))cb_humidity,
 	                           NULL);
 
 	// Set period for humidity callback to 1s (1000ms)
