@@ -29,5 +29,5 @@ if __name__ == "__main__":
     # Configure threshold for humidity "outside of 30 to 60 %RH"
     h.set_humidity_callback_threshold("o", 30*10, 60*10)
 
-    raw_input("Press key to exit\n") # Use input() in Python 3
+    input("Press key to exit\n") # Use raw_input() in Python 2
     ipcon.disconnect()
